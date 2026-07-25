@@ -67,7 +67,7 @@ export default function PrivacyPage() {
 
       <div className="space-y-10">
         <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-          숨벅찬 청년들(이하 &ldquo;팀&rdquo;)은 공부 집중 측정 서비스
+          숨 벅찬 청년들(이하 &ldquo;팀&rdquo;)은 공부 집중 측정 서비스
           FocusOn(이하 &ldquo;서비스&rdquo;)을 제공하면서 이용자의 개인정보를
           소중하게 다루며, 「개인정보 보호법」 등 관련 법령을 준수합니다. 본
           방침은 서비스가 어떤 정보를 왜 수집하고, 어떻게 보관하며, 이용자가
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
           </p>
           <Table
             rows={[
-              ["책임자", "숨벅찬 청년들 개인정보 보호책임자"],
+              ["책임자", "숨 벅찬 청년들 개인정보 보호책임자"],
               ["이메일", SITE.supportEmail],
             ]}
           />

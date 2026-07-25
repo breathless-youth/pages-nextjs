@@ -46,7 +46,7 @@ export default function TermsPage() {
       <div className="space-y-10">
         <Section no={1} title="목적">
           <p>
-            본 약관은 숨벅찬 청년들(이하 &ldquo;팀&rdquo;)이 제공하는 공부 집중
+            본 약관은 숨 벅찬 청년들(이하 &ldquo;팀&rdquo;)이 제공하는 공부 집중
             측정 서비스 FocusOn(이하 &ldquo;서비스&rdquo;)의 이용 조건과
             절차, 팀과 이용자의 권리와 의무를 정하는 것을 목적으로 합니다.
           </p>

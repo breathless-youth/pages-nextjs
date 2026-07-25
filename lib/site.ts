@@ -1,7 +1,7 @@
 export const SITE = {
   appName: "FocusOn",
   appNameKo: "포커스온",
-  teamName: "숨벅찬 청년들",
+  teamName: "숨 벅찬 청년들",
   supportEmail: "breathless.youth@gmail.com",
   privacyPath: "/privacy",
   // TODO: 배포 후 실제 도메인으로 교체 (sitemap, OG 이미지 URL에 사용)

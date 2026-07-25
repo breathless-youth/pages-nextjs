@@ -117,7 +117,7 @@ export default function AuroraPage() {
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-white/10 py-10 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <span>© 2026 숨벅찬 청년들</span>
+          <span>© 2026 숨 벅찬 청년들</span>
           <div className="flex items-center gap-6">
             <a
               href={`mailto:${SITE.supportEmail}`}

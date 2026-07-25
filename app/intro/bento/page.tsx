@@ -153,7 +153,7 @@ export default function BentoPage() {
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-slate-200 py-10 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-          <span>© 2026 숨벅찬 청년들</span>
+          <span>© 2026 숨 벅찬 청년들</span>
           <div className="flex items-center gap-6">
             <a
               href={`mailto:${SITE.supportEmail}`}

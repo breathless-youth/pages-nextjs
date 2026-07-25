@@ -149,7 +149,7 @@ export default function BoldPage() {
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-3 px-6 py-8 font-mono text-xs uppercase tracking-wider text-zinc-500 md:flex-row md:items-center md:justify-between">
-          <span>© 2026 숨벅찬 청년들</span>
+          <span>© 2026 숨 벅찬 청년들</span>
           <Link
             href={SITE.privacyPath}
             className="underline underline-offset-4 hover:text-zinc-900"
