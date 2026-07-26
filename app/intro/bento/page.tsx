@@ -158,14 +158,14 @@ export default function BentoPage() {
         </section>
 
         <FeatureGrid
-          className="border-t border-slate-200 py-20"
+          className="border-t border-slate-200 py-20 md:py-28"
           headingClassName="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
           cardClassName="rounded-2xl border border-slate-200 bg-white p-5"
           titleClassName="font-semibold text-slate-900"
           bodyClassName="mt-1.5 text-sm leading-relaxed text-slate-500"
         />
         <FaqSection
-          className="border-t border-slate-200 py-20"
+          className="border-t border-slate-200 py-20 md:py-28"
           headingClassName="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
           itemClassName="rounded-2xl border border-slate-200 bg-white p-4"
           questionClassName="text-[15px] font-semibold text-slate-900"

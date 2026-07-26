@@ -22,7 +22,7 @@ const laps: [string, string, string][] = [
   ["자리 이탈", "2회", "-9:40"],
   ["휴대폰 사용", "2회", "-6:12"],
   ["기기 조작", "1회", "-5:12"],
-  ["일시정지", "1회", "-3:00"],
+  ["일시정지", "1회", "3:00"],
 ];
 
 export default function ChronoPage() {
@@ -74,23 +74,43 @@ export default function ChronoPage() {
                 흐트러짐은 전부 감점입니다
               </h2>
               <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-zinc-500">
-                세션이 끝나면 어떤 흐트러짐으로 몇 분을 잃었는지 그대로
+                공부가 끝나면 어떤 흐트러짐으로 몇 분을 잃었는지 그대로
                 보여줍니다. 실제 공부 결과 예시입니다.
               </p>
               <ul className="mt-8 max-w-sm">
-                {laps.map(([name, count, penalty], i) => (
-                  <Reveal key={name} delay={i * 0.08}>
-                    <li className="flex items-baseline justify-between border-b border-zinc-200 py-3.5">
-                      <span className="font-semibold">{name}</span>
-                      <span className="font-mono text-sm tabular-nums text-zinc-400">
-                        {count}
-                        <span className="ml-4 font-bold text-red-600">
-                          {penalty}
+                {laps.map(([name, count, penalty], i) => {
+                  const isPause = name === "일시정지";
+                  return (
+                    <Reveal key={name} delay={i * 0.08}>
+                      <li className="flex items-baseline justify-between border-b border-zinc-200 py-3.5">
+                        <span
+                          className={
+                            isPause
+                              ? "flex items-center gap-1.5 font-semibold text-zinc-400"
+                              : "font-semibold"
+                          }
+                        >
+                          {isPause && (
+                            <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+                          )}
+                          {name}
                         </span>
-                      </span>
-                    </li>
-                  </Reveal>
-                ))}
+                        <span className="font-mono text-sm tabular-nums text-zinc-400">
+                          {count}
+                          <span
+                            className={
+                              isPause
+                                ? "ml-4 font-bold text-zinc-400"
+                                : "ml-4 font-bold text-red-600"
+                            }
+                          >
+                            {penalty}
+                          </span>
+                        </span>
+                      </li>
+                    </Reveal>
+                  );
+                })}
               </ul>
             </div>
           </Reveal>

@@ -50,7 +50,7 @@ const nightFeatures: { icon: React.ReactNode; title: string; body: string }[] =
         <ChartBarIcon size={26} weight="duotone" className="text-sky-300" />
       ),
       title: "아침에 확인하는 어젯밤의 기록",
-      body: "세션이 끝나면 순공 시간과 집중률이 정리됩니다. 일간, 주간, 월간 통계로 쌓입니다.",
+      body: "공부가 끝나면 순공 시간과 집중률이 정리됩니다. 일간, 주간, 월간 통계로 쌓입니다.",
     },
     {
       icon: (

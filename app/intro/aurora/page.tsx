@@ -31,7 +31,7 @@ const cards: { icon: React.ReactNode; title: string; body: string }[] = [
       <ChartLineUpIcon size={26} weight="duotone" className="text-teal-300" />
     ),
     title: "쌓이는 기록",
-    body: "세션이 끝나면 순공 시간과 집중률이 정리되고, 일간부터 월간까지 통계로 남습니다.",
+    body: "공부가 끝나면 순공 시간과 집중률이 정리되고, 일간부터 월간까지 통계로 남습니다.",
   },
   {
     icon: (

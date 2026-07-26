@@ -12,7 +12,7 @@ const WEEK_CHECK = ["월", "화", "수", "목", "금", "토", "일"]; // 배너 
 const OFFSET = 3; // 2026-07-01 = 수요일
 const DAYS = 31;
 const TODAY = 25;
-const DOT_DAYS = new Set([14, 15, 17, 18, 20, 21, 22, 23, 24]);
+const DOT_DAYS = new Set([14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
 
 const SUMMARY: { label: string; value: string; brand?: boolean }[] = [
   { label: "순공시간", value: "3시간 42분", brand: true },
