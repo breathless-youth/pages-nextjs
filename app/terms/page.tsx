@@ -92,7 +92,6 @@ export default function TermsPage() {
         <Section no={4} title="서비스의 내용">
           <ul className="list-disc space-y-1.5 pl-5">
             <li>기기 내 AI 기반 공부 상태 감지 및 순공 시간 측정</li>
-            <li>카메라를 사용하지 않는 수동 타이머 측정</li>
             <li>일간, 주간, 월간 공부 통계와 스트릭(연속 기록) 제공</li>
             <li>문의 접수 및 응대</li>
           </ul>
@@ -143,10 +142,6 @@ export default function TermsPage() {
             카메라 영상은 기기 안에서만 분석되며, 서버로 전송되거나 저장되지
             않습니다. 서비스는 얼굴을 식별하거나 생체인식정보를 생성하지
             않습니다.
-          </p>
-          <p>
-            이용자는 카메라 권한을 허용하지 않고도 수동 타이머 방식으로
-            서비스를 이용할 수 있습니다.
           </p>
         </Section>
 
