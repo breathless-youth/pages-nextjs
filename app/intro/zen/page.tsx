@@ -3,12 +3,17 @@ import Link from "next/link";
 import { AppTimerScreen } from "@/components/app/AppTimerScreen";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Zen)",
   description:
     "조용히 깊게 오래. 온디바이스 AI가 몰입의 시간만 기록하는 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 const principles: [string, string][] = [
@@ -22,13 +27,14 @@ const principles: [string, string][] = [
   ],
   [
     "쌓임",
-    "하루의 순공이 일간, 주간, 월간으로 포개집니다. 이어지는 스트릭이 내일도 같은 자리에 앉게 합니다.",
+    "하루의 순공이 달력 위에 포개집니다. 이어지는 연속 공부가 내일도 같은 자리에 앉게 합니다.",
   ],
 ];
 
 export default function ZenPage() {
   return (
     <div className="min-h-[100dvh] bg-[#f3f6f1] text-emerald-950">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-4xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -118,6 +124,21 @@ export default function ZenPage() {
             </Link>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-emerald-900/10 py-20 md:py-24"
+          headingClassName="text-center text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl"
+          cardClassName="rounded-2xl border border-emerald-900/10 bg-white p-5"
+          titleClassName="font-semibold text-emerald-950"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-emerald-900/60"
+        />
+        <FaqSection
+          className="border-t border-emerald-900/10 py-20 md:py-24"
+          headingClassName="text-center text-2xl font-bold tracking-tight text-emerald-950 md:text-3xl"
+          itemClassName="rounded-2xl border border-emerald-900/10 bg-white p-4"
+          questionClassName="text-[15px] font-semibold text-emerald-950"
+          answerClassName="text-[15px] leading-relaxed text-emerald-900/60"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-emerald-900/10 py-10 text-sm text-emerald-900/40 md:flex-row md:items-center md:justify-between">

@@ -7,19 +7,24 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { AuroraTilt } from "@/components/aurora/AuroraTilt";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Aurora)",
   description:
     "흐트러진 시간은 걷어내고 순공만 남깁니다. 온디바이스 AI 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 const cards: { icon: React.ReactNode; title: string; body: string }[] = [
   {
     icon: <EyeIcon size={26} weight="duotone" className="text-teal-300" />,
-    title: "감지하는 타이머",
-    body: "자리 비움과 휴대폰 사용을 기기 안의 비전 AI가 알아차리고, 그 구간은 순공에서 뺍니다.",
+    title: "알아차리는 타이머",
+    body: "자리 이탈과 휴대폰 사용을 기기 안의 비전 AI가 알아차리고, 그 구간은 순공에서 뺍니다.",
   },
   {
     icon: (
@@ -40,6 +45,7 @@ const cards: { icon: React.ReactNode; title: string; body: string }[] = [
 export default function AuroraPage() {
   return (
     <div className="relative min-h-[100dvh] overflow-hidden bg-[#080f16] text-slate-100">
+      <AppJsonLd />
       {/* 오로라 배경 */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="animate-drift absolute -top-40 -left-24 h-[34rem] w-[34rem] rounded-full bg-teal-400/15 blur-3xl" />
@@ -114,6 +120,21 @@ export default function AuroraPage() {
             </Link>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-white/10 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl"
+          cardClassName="rounded-2xl border border-white/10 bg-white/[0.05] p-5 backdrop-blur"
+          titleClassName="font-semibold text-slate-100"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-slate-400"
+        />
+        <FaqSection
+          className="border-t border-white/10 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl"
+          itemClassName="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
+          questionClassName="text-[15px] font-semibold text-slate-100"
+          answerClassName="text-[15px] leading-relaxed text-slate-400"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-white/10 py-10 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">

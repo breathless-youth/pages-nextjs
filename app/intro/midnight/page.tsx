@@ -9,12 +9,17 @@ import {
 import { AppResultScreen } from "@/components/app/AppResultScreen";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Midnight)",
   description:
     "새벽까지 이어지는 공부, 순공 시간으로 증명. 온디바이스 AI 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 // 밤하늘 별 (고정 좌표, hydration 안정)
@@ -37,8 +42,8 @@ const nightFeatures: { icon: React.ReactNode; title: string; body: string }[] =
   [
     {
       icon: <EyeIcon size={26} weight="duotone" className="text-sky-300" />,
-      title: "졸음도 딴짓도 놓치지 않는 감지",
-      body: "자리 비움과 휴대폰 사용을 기기 안의 비전 AI가 알아차립니다. 흐트러진 구간은 순공 시간에서 빠집니다.",
+      title: "흐트러진 순간을 알아차리는 측정",
+      body: "자리 이탈과 휴대폰 사용을 기기 안의 비전 AI가 알아차립니다. 흐트러진 구간은 순공 시간에서 빠집니다.",
     },
     {
       icon: (
@@ -59,6 +64,7 @@ const nightFeatures: { icon: React.ReactNode; title: string; body: string }[] =
 export default function MidnightPage() {
   return (
     <div className="relative min-h-[100dvh] overflow-hidden bg-[#0a1128] text-slate-100">
+      <AppJsonLd />
       {/* 밤하늘: 별 + 글로우 오브 */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {stars.map((s, i) => (
@@ -164,6 +170,21 @@ export default function MidnightPage() {
             </Link>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-slate-100/10 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl"
+          cardClassName="rounded-xl border border-slate-100/10 bg-white/[0.04] p-5"
+          titleClassName="font-semibold text-slate-100"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-slate-400"
+        />
+        <FaqSection
+          className="border-t border-slate-100/10 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-100 md:text-3xl"
+          itemClassName="rounded-xl border border-slate-100/10 bg-white/[0.04] p-4"
+          questionClassName="text-[15px] font-semibold text-slate-100"
+          answerClassName="text-[15px] leading-relaxed text-slate-400"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-slate-100/10 py-10 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">

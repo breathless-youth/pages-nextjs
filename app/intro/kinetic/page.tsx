@@ -6,24 +6,30 @@ import { KineticWords } from "@/components/kinetic/KineticWords";
 import { ScrollBand } from "@/components/kinetic/ScrollBand";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Kinetic)",
   description:
-    "딴짓한 시간 빼고 셉니다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
+    "흐트러진 시간 빼고 셉니다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 const rows: [string, string][] = [
-  ["상태 감지", "자리 비움과 휴대폰 사용을 기기 안의 비전 AI가 실시간으로 알아차립니다."],
+  ["상태 측정", "자리 이탈과 휴대폰 사용을 기기 안의 비전 AI가 실시간으로 알아차립니다."],
   ["순공 기록", "흐트러진 구간은 자동으로 빠지고 실제 집중한 시간만 남습니다."],
-  ["통계와 스트릭", "일간, 주간, 월간 리포트와 연속 기록으로 공부 패턴이 보입니다."],
+  ["통계와 연속 공부", "달력과 일간 요약, 연속 기록으로 공부 패턴이 보입니다."],
   ["같이 공부", "같은 목표를 가진 사람들과 나란히 앉아 측정할 수 있습니다."],
 ];
 
 export default function KineticPage() {
   return (
     <div className="min-h-[100dvh] bg-[#fafaf9] text-zinc-900">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -44,7 +50,7 @@ export default function KineticPage() {
             빼고 셉니다.
           </h1>
           <p className="animate-fade-up mt-7 max-w-md text-base leading-relaxed text-zinc-500 [animation-delay:130ms] md:text-lg">
-            카메라 AI가 딴짓을 알아채는 순간 순공 타이머는 멈춥니다. 남는
+            카메라 AI가 흐트러짐을 알아채는 순간 순공 타이머는 멈춥니다. 남는
             숫자가 진짜 공부량입니다.
           </p>
           <div className="animate-fade-up mt-10 flex flex-wrap items-center gap-5 [animation-delay:260ms]">
@@ -119,6 +125,21 @@ export default function KineticPage() {
             </div>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-zinc-200 py-20 md:py-28"
+          headingClassName="text-2xl font-extrabold tracking-tight md:text-3xl"
+          cardClassName="border-b border-zinc-200 pb-5"
+          titleClassName="font-bold"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-zinc-500"
+        />
+        <FaqSection
+          className="border-t border-zinc-200 py-20 md:py-28"
+          headingClassName="text-2xl font-extrabold tracking-tight md:text-3xl"
+          itemClassName="border-b border-zinc-200 pb-4"
+          questionClassName="text-[15px] font-semibold"
+          answerClassName="text-[15px] leading-relaxed text-zinc-500"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-zinc-200 py-10 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">

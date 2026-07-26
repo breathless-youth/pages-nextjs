@@ -7,21 +7,22 @@ import {
   TimerIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react/dist/ssr";
+import { AppRecordsScreen } from "@/components/app/AppRecordsScreen";
+import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
 import { SoftHeroVisual } from "@/components/soft/SoftHeroVisual";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Soft)",
   description:
-    "집중한 만큼 쌓입니다. AI가 딴짓을 알아채고 순공 시간만 기록하는 공부 타이머 FocusON.",
+    "집중한 만큼 쌓입니다. AI가 흐트러진 순간을 알아채고 순공 시간만 기록하는 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
-
-// mock: 스트릭 캘린더 예시 (0 없음, 1 조금, 2 많이)
-const streakDots = [
-  1, 2, 2, 1, 2, 0, 1, 2, 2, 1, 2, 2, 1, 0, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1,
-  2, 1, 2, 0, 2, 2, 1, 2, 2, 2,
-];
 
 const features: {
   icon: React.ReactNode;
@@ -31,8 +32,8 @@ const features: {
 }[] = [
   {
     icon: <EyesIcon size={26} weight="duotone" className="text-orange-700" />,
-    title: "딴짓을 알아채는 AI",
-    body: "자리 비움도 휴대폰도 카메라가 알아봅니다. 분석은 기기 안에서만 이루어져요.",
+    title: "흐트러진 순간을 알아채는 AI",
+    body: "자리 이탈도 휴대폰도 카메라가 알아봅니다. 분석은 기기 안에서만 이루어져요.",
     tint: "border-orange-200/70 bg-orange-100/60",
   },
   {
@@ -70,6 +71,7 @@ const features: {
 export default function SoftPage() {
   return (
     <div className="min-h-[100dvh] bg-[linear-gradient(180deg,#fdfcfb_0%,#fff1e7_58%,#fdfcfb_100%)] text-stone-900">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-5xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -88,8 +90,8 @@ export default function SoftPage() {
             집중한 만큼 쌓입니다
           </h1>
           <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-stone-500 md:text-lg">
-            AI가 딴짓을 알아채는 공부 타이머. 흐트러진 시간은 빼고 순공
-            시간만 기록해요.
+            AI가 흐트러진 순간을 알아채는 공부 타이머. 흐트러진 시간은 빼고
+            순공 시간만 기록해요.
           </p>
           <div className="mt-9 flex flex-col items-center gap-4">
             <a
@@ -141,33 +143,16 @@ export default function SoftPage() {
                 또 앉게 되는 기록
               </h2>
               <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-stone-500 md:text-base">
-                공부한 날이 달력에 하나씩 채워집니다. 이어져 온 스트릭이
+                공부한 날이 달력에 하나씩 채워집니다. 이어져 온 연속 공부가
                 오늘도 책상 앞으로 데려다줘요.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="mx-auto w-fit rounded-3xl border border-stone-200/80 bg-white/80 p-7 shadow-[0_20px_50px_-30px_rgba(68,64,60,0.4)]">
-              <p className="text-xs font-medium text-stone-400">
-                최근 5주의 기록 (예시)
-              </p>
-              <div
-                className="mt-4 grid grid-cols-7 gap-2"
-                aria-hidden="true"
-              >
-                {streakDots.map((level, i) => (
-                  <span
-                    key={i}
-                    className={`h-6 w-6 rounded-lg ${
-                      level === 2
-                        ? "bg-orange-600"
-                        : level === 1
-                          ? "bg-orange-300"
-                          : "bg-stone-200"
-                    }`}
-                  />
-                ))}
-              </div>
+            <div className="flex justify-center md:justify-end">
+              <PhoneSlot frameClassName="border-orange-200/80 bg-white/80 shadow-[0_32px_80px_-32px_rgba(194,65,12,0.4)]">
+                <AppRecordsScreen />
+              </PhoneSlot>
             </div>
           </Reveal>
         </section>
@@ -198,6 +183,21 @@ export default function SoftPage() {
             </div>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="py-20 md:py-28"
+          headingClassName="text-2xl font-bold tracking-tight text-stone-800 md:text-3xl"
+          cardClassName="rounded-3xl border border-orange-200/60 bg-white/70 p-5"
+          titleClassName="font-semibold text-stone-800"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-stone-500"
+        />
+        <FaqSection
+          className="py-20 md:py-28"
+          headingClassName="text-2xl font-bold tracking-tight text-stone-800 md:text-3xl"
+          itemClassName="rounded-3xl border border-orange-200/60 bg-white/70 p-4"
+          questionClassName="text-[15px] font-semibold text-stone-800"
+          answerClassName="text-[15px] leading-relaxed text-stone-500"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-stone-200 py-10 text-sm text-stone-400 md:flex-row md:items-center md:justify-between">
