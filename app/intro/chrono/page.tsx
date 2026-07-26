@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// 초안 세션 결과 값 기반
+// V1.0 공부 결과(S4) 값 기반
 const laps: [string, string, string][] = [
   ["자리 이탈", "2회", "-9:40"],
   ["휴대폰 사용", "2회", "-6:12"],
-  ["기기 조작", "1회", "-2:08"],
-  ["화면 꺼짐", "1회", "-3:00"],
+  ["기기 조작", "1회", "-5:12"],
+  ["일시정지", "1회", "-3:00"],
 ];
 
 export default function ChronoPage() {
@@ -75,7 +75,7 @@ export default function ChronoPage() {
               </h2>
               <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-zinc-500">
                 세션이 끝나면 어떤 흐트러짐으로 몇 분을 잃었는지 그대로
-                보여줍니다. 초안의 실제 세션 결과 예시입니다.
+                보여줍니다. 실제 공부 결과 예시입니다.
               </p>
               <ul className="mt-8 max-w-sm">
                 {laps.map(([name, count, penalty], i) => (
