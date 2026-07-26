@@ -56,8 +56,8 @@ export function DotFill({ days = 12 }: { days?: number }) {
 
 const cycle = [
   { label: "집중 중", cls: "bg-blue-50 text-blue-700 border-blue-200" },
-  { label: "휴대폰 감지", cls: "bg-amber-50 text-amber-700 border-amber-200" },
-  { label: "자리 비움", cls: "bg-slate-100 text-slate-500 border-slate-200" },
+  { label: "휴대폰 사용", cls: "bg-amber-50 text-amber-700 border-amber-200" },
+  { label: "자리 이탈", cls: "bg-slate-100 text-slate-500 border-slate-200" },
 ];
 
 /** 감지 상태 칩이 순환 전환되는 타일. */

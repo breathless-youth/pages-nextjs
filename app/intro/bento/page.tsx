@@ -6,17 +6,23 @@ import { BarGrow, DotFill, StatusCycle } from "@/components/bento/BentoTiles";
 import { CountUp } from "@/components/CountUp";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Bento)",
   description:
-    "순공 시간, 통계, 스트릭까지 한 판에. 온디바이스 AI 공부 타이머 FocusON.",
+    "순공 시간, 통계, 연속 공부까지 한 판에. 온디바이스 AI 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 export default function BentoPage() {
   return (
     <div className="min-h-[100dvh] bg-[#f5f5f4] text-slate-900">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -36,7 +42,7 @@ export default function BentoPage() {
             <br />한 판에 정리됩니다
           </h1>
           <p className="animate-fade-up mt-6 max-w-md text-base leading-relaxed text-slate-500 [animation-delay:130ms] md:text-lg">
-            AI가 잰 순공 시간부터 통계와 스트릭까지. 기록은 FocusON이 하고,
+            AI가 잰 순공 시간부터 통계와 연속 공부까지. 기록은 FocusON이 하고,
             당신은 공부만 하면 됩니다.
           </p>
           <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-5 [animation-delay:260ms]">
@@ -90,7 +96,7 @@ export default function BentoPage() {
                     상태를 아는 타이머
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                    자리 비움과 휴대폰 사용을 기기 안의 AI가 감지하고, 그
+                    자리 이탈과 휴대폰 사용을 기기 안의 AI가 알아차리고, 그
                     구간은 순공에서 뺍니다.
                   </p>
                 </div>
@@ -150,6 +156,21 @@ export default function BentoPage() {
             </Reveal>
           </div>
         </section>
+
+        <FeatureGrid
+          className="border-t border-slate-200 py-20"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
+          cardClassName="rounded-2xl border border-slate-200 bg-white p-5"
+          titleClassName="font-semibold text-slate-900"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-slate-500"
+        />
+        <FaqSection
+          className="border-t border-slate-200 py-20"
+          headingClassName="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
+          itemClassName="rounded-2xl border border-slate-200 bg-white p-4"
+          questionClassName="text-[15px] font-semibold text-slate-900"
+          answerClassName="text-[15px] leading-relaxed text-slate-500"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-slate-200 py-10 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">

@@ -9,12 +9,17 @@ import {
 import { AppTimerScreen } from "@/components/app/AppTimerScreen";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Focus)",
   description:
-    "집중한 시간만 셉니다. 카메라 AI가 자리 비움과 휴대폰 사용을 감지하는 순공 타이머 FocusON.",
+    "집중한 시간만 셉니다. 카메라 AI가 자리 이탈과 휴대폰 사용을 알아차리는 순공 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 const weekBars = [64, 82, 45, 91, 77, 30, 88]; // mock: 주간 순공 시간 비율
@@ -22,6 +27,7 @@ const weekBars = [64, 82, 45, 91, 77, 30, 88]; // mock: 주간 순공 시간 비
 export default function FocusPage() {
   return (
     <div className="min-h-[100dvh] bg-zinc-950 text-zinc-100">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -45,7 +51,7 @@ export default function FocusPage() {
               셉니다.
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-zinc-400 md:text-lg">
-              카메라가 자리 비움과 휴대폰 사용을 감지하면 순공 타이머는 그
+              카메라가 자리 이탈과 휴대폰 사용을 알아차리면 순공 타이머는 그
               순간 멈춥니다.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-5">
@@ -73,7 +79,7 @@ export default function FocusPage() {
         <section className="border-t border-zinc-800/80 py-20 md:py-24">
           <Reveal>
             <h2 className="max-w-xl text-2xl font-bold tracking-tight md:text-3xl">
-              감지는 AI가, 기록은 자동으로
+              측정은 AI가, 기록은 자동으로
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-4 md:grid-cols-12">
@@ -86,11 +92,11 @@ export default function FocusPage() {
                 />
                 <div className="mt-16">
                   <h3 className="text-xl font-semibold tracking-tight">
-                    자리 비움과 휴대폰 사용 감지
+                    자리 이탈과 휴대폰 사용을 알아차림
                   </h3>
                   <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-zinc-400">
                     책상을 떠나거나 휴대폰을 집어 드는 순간을 기기 안의 비전
-                    AI가 알아차립니다. 딴짓한 구간은 순공 시간에서 정확히
+                    AI가 알아차립니다. 흐트러진 구간은 순공 시간에서 정확히
                     빠집니다.
                   </p>
                 </div>
@@ -139,7 +145,7 @@ export default function FocusPage() {
                     31
                   </p>
                   <h3 className="mt-4 text-lg font-semibold tracking-tight">
-                    스트릭
+                    연속 공부
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-zinc-400">
                     하루도 빠짐없이 이어 온 기록이 내일의 이유가 됩니다.
@@ -178,6 +184,21 @@ export default function FocusPage() {
             </div>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-zinc-800/80 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-zinc-100 md:text-3xl"
+          cardClassName="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5"
+          titleClassName="font-semibold text-zinc-100"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-zinc-400"
+        />
+        <FaqSection
+          className="border-t border-zinc-800/80 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight text-zinc-100 md:text-3xl"
+          itemClassName="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4"
+          questionClassName="text-[15px] font-semibold text-zinc-100"
+          answerClassName="text-[15px] leading-relaxed text-zinc-400"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-zinc-800/80 py-10 text-sm text-zinc-500 md:flex-row md:items-center md:justify-between">

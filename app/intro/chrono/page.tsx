@@ -4,17 +4,22 @@ import { AppResultScreen } from "@/components/app/AppResultScreen";
 import { ChronoRing } from "@/components/chrono/ChronoRing";
 import { PhoneSlot } from "@/components/PhoneSlot";
 import { Reveal } from "@/components/Reveal";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Chrono)",
   description:
     "공부를 기록 경기처럼. 카메라 AI가 순공 시간을 초 단위로 재는 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 // 초안 세션 결과 값 기반
 const laps: [string, string, string][] = [
-  ["자리 비움", "2회", "-9:40"],
+  ["자리 이탈", "2회", "-9:40"],
   ["휴대폰 사용", "2회", "-6:12"],
   ["기기 조작", "1회", "-2:08"],
   ["화면 꺼짐", "1회", "-3:00"],
@@ -23,6 +28,7 @@ const laps: [string, string, string][] = [
 export default function ChronoPage() {
   return (
     <div className="min-h-[100dvh] bg-[#faf9f7] text-zinc-900">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -65,10 +71,10 @@ export default function ChronoPage() {
           <Reveal>
             <div>
               <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">
-                딴짓은 전부 감점입니다
+                흐트러짐은 전부 감점입니다
               </h2>
               <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-zinc-500">
-                세션이 끝나면 어떤 딴짓으로 몇 분을 잃었는지 그대로
+                세션이 끝나면 어떤 흐트러짐으로 몇 분을 잃었는지 그대로
                 보여줍니다. 초안의 실제 세션 결과 예시입니다.
               </p>
               <ul className="mt-8 max-w-sm">
@@ -116,6 +122,21 @@ export default function ChronoPage() {
             </Link>
           </Reveal>
         </section>
+
+        <FeatureGrid
+          className="border-t border-zinc-200 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight md:text-3xl"
+          cardClassName="rounded-xl border border-zinc-200 bg-white p-5"
+          titleClassName="font-semibold"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-zinc-500"
+        />
+        <FaqSection
+          className="border-t border-zinc-200 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight md:text-3xl"
+          itemClassName="border-b border-zinc-200 pb-4"
+          questionClassName="text-[15px] font-semibold"
+          answerClassName="text-[15px] leading-relaxed text-zinc-500"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-zinc-200 py-10 font-mono text-xs text-zinc-400 md:flex-row md:items-center md:justify-between">

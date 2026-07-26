@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AppResultScreen } from "@/components/app/AppResultScreen";
 import { PhoneSlot } from "@/components/PhoneSlot";
+import { AppJsonLd } from "@/components/seo/JsonLd";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { FeatureGrid } from "@/components/sections/FeatureGrid";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "소개 (Ink)",
   description:
     "앉아 있던 시간 말고 공부한 시간. 온디바이스 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
+  // 시안 선택 전 임시 — 승격 시 제거
+  robots: { index: false, follow: false },
 };
 
 const steps: [string, string][] = [
@@ -16,8 +21,8 @@ const steps: [string, string][] = [
     "책상 앞에 폰을 세워 두고 세션을 시작합니다. 회원가입도 로그인도 필요 없습니다.",
   ],
   [
-    "AI가 상태를 감지",
-    "자리 비움과 휴대폰 사용을 기기 안의 AI가 실시간으로 알아차립니다.",
+    "AI가 알아서 측정",
+    "자리 이탈과 휴대폰 사용을 기기 안의 AI가 실시간으로 알아차립니다.",
   ],
   [
     "순공 시간만 남김",
@@ -28,12 +33,13 @@ const steps: [string, string][] = [
 const records: [string, string][] = [
   ["순공 시간", "타이머를 켜 둔 시간이 아니라 실제로 집중한 시간"],
   ["공부 통계", "일간, 주간, 월간으로 쌓이는 나의 공부 패턴"],
-  ["스트릭", "하루도 빠짐없이 이어 온 연속 기록"],
+  ["연속 공부", "하루 10분이면 이어지는 연속 기록"],
 ];
 
 export default function InkPage() {
   return (
     <div className="min-h-[100dvh] bg-[#fafaf8] text-zinc-900">
+      <AppJsonLd />
       <div className="mx-auto w-full max-w-5xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
@@ -56,7 +62,7 @@ export default function InkPage() {
             공부한 시간.
           </h1>
           <p className="animate-fade-up mt-7 max-w-md text-base leading-relaxed text-zinc-500 [animation-delay:120ms] md:text-lg">
-            FocusON은 기기 안의 AI가 집중 상태를 감지해 순공 시간만 기록하는
+            FocusON은 기기 안의 AI가 집중 상태를 알아차려 순공 시간만 기록하는
             공부 타이머입니다.
           </p>
           <div className="animate-fade-up mt-10 flex flex-wrap items-center gap-5 [animation-delay:240ms]">
@@ -127,7 +133,7 @@ export default function InkPage() {
             카메라 영상은 기기 밖으로 나가지 않습니다.
           </p>
           <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-zinc-500 md:text-base">
-            상태 감지는 전부 기기 안에서 끝납니다. 서버에 저장되는 것은
+            상태 측정은 전부 기기 안에서 끝납니다. 서버에 저장되는 것은
             &ldquo;몇 시부터 몇 분간 집중했다&rdquo;는 기록뿐이며, 영상이나
             사진은 전송도 저장도 하지 않습니다. 계정도 만들지 않으므로 이름,
             이메일, 전화번호를 요구할 일도 없습니다.
@@ -139,6 +145,21 @@ export default function InkPage() {
             개인정보처리방침 전문 보기
           </Link>
         </section>
+
+        <FeatureGrid
+          className="border-t border-zinc-200 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight md:text-3xl"
+          cardClassName="rounded-2xl border border-zinc-200 p-5"
+          titleClassName="font-semibold tracking-tight"
+          bodyClassName="mt-1.5 text-sm leading-relaxed text-zinc-500"
+        />
+        <FaqSection
+          className="border-t border-zinc-200 py-20 md:py-24"
+          headingClassName="text-2xl font-bold tracking-tight md:text-3xl"
+          itemClassName="border-b border-zinc-200 pb-4"
+          questionClassName="text-[15px] font-semibold"
+          answerClassName="text-[15px] leading-relaxed text-zinc-500"
+        />
 
         {/* 푸터 */}
         <footer className="flex flex-col gap-4 border-t border-zinc-200 py-10 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
