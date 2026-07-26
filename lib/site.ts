@@ -4,8 +4,8 @@ export const SITE = {
   teamName: "숨 벅찬 청년들",
   supportEmail: "breathless.youth@gmail.com",
   privacyPath: "/privacy",
-  // TODO: 배포 후 실제 도메인으로 교체 (sitemap, OG 이미지 URL에 사용)
-  siteUrl: "https://focuson.example.com",
+  // 커스텀 도메인 없이 Vercel 기본 도메인을 정식 URL로 사용하기로 확정 (2026-07-26)
+  siteUrl: "https://pages-nextjs-liart.vercel.app",
   // TODO: 스토어 등록 후 실제 URL로 교체
   appStoreUrl: null as string | null,
   playStoreUrl: null as string | null,
