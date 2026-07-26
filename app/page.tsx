@@ -143,13 +143,13 @@ export default function Home() {
             {" "}이용약관 (앱 설정 화면에서 링크)
           </li>
           <li>
-            <a
-              href="/app-ads.txt"
+            <Link
+              href="/support"
               className="underline underline-offset-4 hover:text-zinc-900 dark:hover:text-zinc-100"
             >
-              /app-ads.txt
-            </a>
-            {" "}AdMob 게시자 ID 교체 필요
+              /support
+            </Link>
+            {" "}고객지원 (Apple 지원 URL용)
           </li>
         </ul>
       </section>
