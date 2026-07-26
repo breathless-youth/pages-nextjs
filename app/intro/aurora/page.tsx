@@ -12,7 +12,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Aurora)",
   description:
-    "흐트러진 시간은 걷어내고 순공만 남깁니다. 온디바이스 AI 공부 타이머 FocusOn.",
+    "흐트러진 시간은 걷어내고 순공만 남깁니다. 온디바이스 AI 공부 타이머 FocusON.",
 };
 
 const cards: { icon: React.ReactNode; title: string; body: string }[] = [
@@ -51,7 +51,7 @@ export default function AuroraPage() {
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
           <span className="text-[15px] font-semibold tracking-tight">
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}

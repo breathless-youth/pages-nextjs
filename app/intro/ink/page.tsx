@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Ink)",
   description:
-    "앉아 있던 시간 말고 공부한 시간. 온디바이스 AI가 순공 시간만 기록하는 공부 타이머 FocusOn.",
+    "앉아 있던 시간 말고 공부한 시간. 온디바이스 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
 };
 
 const steps: [string, string][] = [
@@ -38,7 +38,7 @@ export default function InkPage() {
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
           <span className="text-[15px] font-semibold tracking-tight">
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}
@@ -56,7 +56,7 @@ export default function InkPage() {
             공부한 시간.
           </h1>
           <p className="animate-fade-up mt-7 max-w-md text-base leading-relaxed text-zinc-500 [animation-delay:120ms] md:text-lg">
-            FocusOn은 기기 안의 AI가 집중 상태를 감지해 순공 시간만 기록하는
+            FocusON은 기기 안의 AI가 집중 상태를 감지해 순공 시간만 기록하는
             공부 타이머입니다.
           </p>
           <div className="animate-fade-up mt-10 flex flex-wrap items-center gap-5 [animation-delay:240ms]">

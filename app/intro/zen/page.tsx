@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Zen)",
   description:
-    "조용히 깊게 오래. 온디바이스 AI가 몰입의 시간만 기록하는 공부 타이머 FocusOn.",
+    "조용히 깊게 오래. 온디바이스 AI가 몰입의 시간만 기록하는 공부 타이머 FocusON.",
 };
 
 const principles: [string, string][] = [
@@ -33,7 +33,7 @@ export default function ZenPage() {
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
           <span className="text-[15px] font-semibold tracking-tight">
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}

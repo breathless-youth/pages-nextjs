@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Soft)",
   description:
-    "집중한 만큼 쌓입니다. AI가 딴짓을 알아채고 순공 시간만 기록하는 공부 타이머 FocusOn.",
+    "집중한 만큼 쌓입니다. AI가 딴짓을 알아채고 순공 시간만 기록하는 공부 타이머 FocusON.",
 };
 
 // mock: 스트릭 캘린더 예시 (0 없음, 1 조금, 2 많이)
@@ -73,7 +73,7 @@ export default function SoftPage() {
       <div className="mx-auto w-full max-w-5xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
-          <span className="text-[15px] font-bold tracking-tight">FocusOn</span>
+          <span className="text-[15px] font-bold tracking-tight">FocusON</span>
           <a
             href={`mailto:${SITE.supportEmail}`}
             className="text-sm font-medium text-stone-500 transition-colors hover:text-stone-900"

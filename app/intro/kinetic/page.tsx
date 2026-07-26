@@ -11,7 +11,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Kinetic)",
   description:
-    "딴짓한 시간 빼고 셉니다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusOn.",
+    "딴짓한 시간 빼고 셉니다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
 };
 
 const rows: [string, string][] = [
@@ -27,7 +27,7 @@ export default function KineticPage() {
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
-          <span className="text-[15px] font-bold tracking-tight">FocusOn</span>
+          <span className="text-[15px] font-bold tracking-tight">FocusON</span>
           <a
             href={`mailto:${SITE.supportEmail}`}
             className="text-sm text-zinc-500 transition-colors hover:text-zinc-900"

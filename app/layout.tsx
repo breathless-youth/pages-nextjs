@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { GeistMono } from "geist/font/mono";
 import { SITE } from "@/lib/site";
+import { APP_DESCRIPTION } from "@/lib/content";
 import "./globals.css";
 
 const pretendard = localFont({
@@ -14,11 +15,10 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.siteUrl),
   title: {
-    default: "FocusOn | 순공 시간을 증명하는 공부 타이머",
-    template: "%s | FocusOn",
+    default: "FocusON — 순공시간을 증명하는 공부 타이머",
+    template: "%s | FocusON",
   },
-  description:
-    "온디바이스 AI가 집중 상태를 감지해 실제 공부한 시간만 기록하는 공부 타이머, FocusOn.",
+  description: `${APP_DESCRIPTION}, FocusON. 순공 타이머 · 공부 기록 · 집중률 통계.`,
 };
 
 export default function RootLayout({

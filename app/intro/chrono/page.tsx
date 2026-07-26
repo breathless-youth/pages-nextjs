@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Chrono)",
   description:
-    "공부를 기록 경기처럼. 카메라 AI가 순공 시간을 초 단위로 재는 공부 타이머 FocusOn.",
+    "공부를 기록 경기처럼. 카메라 AI가 순공 시간을 초 단위로 재는 공부 타이머 FocusON.",
 };
 
 // 초안 세션 결과 값 기반
@@ -26,7 +26,7 @@ export default function ChronoPage() {
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
-          <span className="text-[15px] font-bold tracking-tight">FocusOn</span>
+          <span className="text-[15px] font-bold tracking-tight">FocusON</span>
           <a
             href={`mailto:${SITE.supportEmail}`}
             className="font-mono text-sm text-zinc-500 transition-colors hover:text-zinc-900"

@@ -11,7 +11,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Bento)",
   description:
-    "순공 시간, 통계, 스트릭까지 한 판에. 온디바이스 AI 공부 타이머 FocusOn.",
+    "순공 시간, 통계, 스트릭까지 한 판에. 온디바이스 AI 공부 타이머 FocusON.",
 };
 
 export default function BentoPage() {
@@ -20,7 +20,7 @@ export default function BentoPage() {
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
-          <span className="text-[15px] font-bold tracking-tight">FocusOn</span>
+          <span className="text-[15px] font-bold tracking-tight">FocusON</span>
           <a
             href={`mailto:${SITE.supportEmail}`}
             className="text-sm font-medium text-slate-500 transition-colors hover:text-slate-900"
@@ -36,7 +36,7 @@ export default function BentoPage() {
             <br />한 판에 정리됩니다
           </h1>
           <p className="animate-fade-up mt-6 max-w-md text-base leading-relaxed text-slate-500 [animation-delay:130ms] md:text-lg">
-            AI가 잰 순공 시간부터 통계와 스트릭까지. 기록은 FocusOn이 하고,
+            AI가 잰 순공 시간부터 통계와 스트릭까지. 기록은 FocusON이 하고,
             당신은 공부만 하면 됩니다.
           </p>
           <div className="animate-fade-up mt-9 flex flex-wrap items-center gap-5 [animation-delay:260ms]">

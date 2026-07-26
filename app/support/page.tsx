@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "고객지원",
-  description: "FocusOn 고객지원 및 자주 묻는 질문",
+  description: "FocusON 고객지원 및 자주 묻는 질문",
 };
 
 function Faq({ q, a }: { q: string; a: React.ReactNode }) {

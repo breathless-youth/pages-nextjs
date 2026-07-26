@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Bold)",
   description:
-    "딴짓하면 시계가 멈춘다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusOn.",
+    "딴짓하면 시계가 멈춘다. 카메라 AI가 순공 시간만 기록하는 공부 타이머 FocusON.",
 };
 
 const cells: [string, string][] = [
@@ -39,7 +39,7 @@ export default function BoldPage() {
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between border-b-2 border-zinc-900 px-6">
           <span className="font-mono text-sm font-bold uppercase tracking-widest">
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}

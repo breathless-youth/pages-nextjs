@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Midnight)",
   description:
-    "새벽까지 이어지는 공부, 순공 시간으로 증명. 온디바이스 AI 공부 타이머 FocusOn.",
+    "새벽까지 이어지는 공부, 순공 시간으로 증명. 온디바이스 AI 공부 타이머 FocusON.",
 };
 
 // 밤하늘 별 (고정 좌표, hydration 안정)
@@ -83,7 +83,7 @@ export default function MidnightPage() {
         <nav className="flex h-16 items-center justify-between">
           <span className="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
             <MoonStarsIcon size={18} weight="duotone" className="text-sky-300" />
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}

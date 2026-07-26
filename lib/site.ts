@@ -1,5 +1,5 @@
 export const SITE = {
-  appName: "FocusOn",
+  appName: "FocusON",
   appNameKo: "포커스온",
   teamName: "숨 벅찬 청년들",
   supportEmail: "breathless.youth@gmail.com",

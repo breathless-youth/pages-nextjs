@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "소개 (Focus)",
   description:
-    "집중한 시간만 셉니다. 카메라 AI가 자리 비움과 휴대폰 사용을 감지하는 순공 타이머 FocusOn.",
+    "집중한 시간만 셉니다. 카메라 AI가 자리 비움과 휴대폰 사용을 감지하는 순공 타이머 FocusON.",
 };
 
 const weekBars = [64, 82, 45, 91, 77, 30, 88]; // mock: 주간 순공 시간 비율
@@ -26,7 +26,7 @@ export default function FocusPage() {
         {/* 네비게이션 */}
         <nav className="flex h-16 items-center justify-between">
           <span className="text-[15px] font-semibold tracking-tight text-zinc-100">
-            FocusOn
+            FocusON
           </span>
           <a
             href={`mailto:${SITE.supportEmail}`}
