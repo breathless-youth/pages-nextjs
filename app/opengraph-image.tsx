@@ -3,7 +3,7 @@ import path from "node:path";
 import { ImageResponse } from "next/og";
 
 // 링크 공유 시 미리보기 이미지 (빌드 타임 정적 생성)
-export const alt = "FocusON | 순공 시간을 증명하는 공부 타이머";
+export const alt = "포메 | 순공 시간을 증명하는 공부 타이머";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -31,7 +31,7 @@ export default async function OgImage() {
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 44, color: "#7dd3fc" }}>
-            FocusON
+            포메
           </div>
           <div
             style={{

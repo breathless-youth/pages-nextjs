@@ -43,5 +43,7 @@ next-env.d.ts
 
 # 디자인 초안 (레포에 올리지 않음)
 스크린샷*.png
+# 캐릭터 원본 렌더. public/pome/ 에 리사이즈+webp 변환본만 커밋한다
+ChatGPT Image*.png
 .DS_Store
 .gstack/

@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "이용약관",
-  description: "FocusON 서비스 이용약관",
+  description: "포메 서비스 이용약관",
 };
 
 function Section({

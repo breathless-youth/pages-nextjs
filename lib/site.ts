@@ -1,6 +1,6 @@
 export const SITE = {
-  appName: "FocusON",
-  appNameKo: "포커스온",
+  appName: "포메",
+  appNameKo: "Pome",
   teamName: "숨 벅찬 청년들",
   supportEmail: "breathless.youth@gmail.com",
   privacyPath: "/privacy",

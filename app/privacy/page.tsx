@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "개인정보처리방침",
-  description: "FocusON 개인정보처리방침",
+  description: "포메 개인정보처리방침",
 };
 
 function Section({
