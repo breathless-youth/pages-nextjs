@@ -405,7 +405,10 @@ export default function Home() {
             <br />왜 성적은 그대로일까
           </h1>
           <p className="mt-[22px] max-w-[600px] text-center text-[17px] leading-[1.65] text-pretty text-[#6B7684] md:text-[19px]">
-            스톱워치는 내가 딴짓하는 걸 모릅니다.<br></br> 포메는 카메라로{" "}
+            스톱워치는 내가 딴짓하는 걸 모릅니다.{" "}
+            {/* 좁은 화면에서는 자연스럽게 흐르도록 데스크톱에서만 줄을 끊는다 */}
+            <br className="hidden md:inline" />
+            포메는 카메라로{" "}
             <span className="font-bold text-[#191F28]">진짜 집중한 시간만</span>{" "}
             골라서 재드려요.
           </p>
