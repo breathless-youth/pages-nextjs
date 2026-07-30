@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     "카메라가 자리 이탈·휴대폰 사용·기기 조작을 기기 안에서만 측정해, 앉아있던 시간이 아니라 실제로 집중한 순공시간만 기록하는 공부 타이머 포메. 사전예약하면 테스터로 참여할 수 있어요.",
 };
 
-/** 헤더·푸터 로고 마크. 디자인 원본의 assets/app-icon.png을 webp로 변환 */
-const APP_ICON = "/pome/app-icon.webp";
+/** 헤더·푸터 로고 마크. 앱 아이콘 원본에서 복숭아색 배경판을 지운 캐릭터 단독 이미지 */
+const LOGO_MARK = "/pome/logo-mark.webp";
 
 const NAV = [
   { href: "#live", label: "측정 화면" },
@@ -137,10 +137,46 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   },
 ];
 
+/**
+ * 소셜 스터디 미리보기 격자. 카메라 영상이 아니라 캐릭터로 상태만 보여주는 화면이다
+ * — 영상을 주고받지 않는다는 페이지 전체의 약속과 어긋나지 않게.
+ * 이미지는 측정 화면 섹션에서 이미 불러온 네 장을 그대로 쓴다.
+ */
 const STUDY_ROOM = [
-  { name: "수민", img: "/pome/pome-a.webp", time: "4시간 12분" },
-  { name: "지호", img: "/pome/pome-b.webp", time: "3시간 48분" },
-  { name: "나", img: "/pome/pome-c.webp", time: "3시간 42분" },
+  {
+    name: "나",
+    img: "/pome/cam-focus.webp",
+    time: "3시간 42분",
+    color: "#4593FC",
+    flip: false,
+  },
+  {
+    name: "수민",
+    img: "/pome/cam-focus.webp",
+    time: "4시간 12분",
+    color: "#4593FC",
+    flip: true,
+  },
+  {
+    name: "지호",
+    img: "/pome/cam-phone.webp",
+    time: "3시간 48분",
+    color: "#FF9E1B",
+    flip: false,
+  },
+  {
+    name: "하윤",
+    img: "/pome/cam-pause.webp",
+    time: "2시간 31분",
+    color: "#8B95A1",
+    flip: false,
+  },
+];
+
+const ROOM_LEGEND = [
+  { label: "집중", color: "#4593FC" },
+  { label: "비집중", color: "#FF9E1B" },
+  { label: "일시정지", color: "#8B95A1" },
 ];
 
 const REPORT_POINTS = [
@@ -279,16 +315,15 @@ function PlayIcon() {
   );
 }
 
-function BrandMark({ size, radius }: { size: number; radius: number }) {
+function BrandMark({ size }: { size: number }) {
   return (
     <span
       aria-hidden="true"
-      className="flex flex-none bg-[#FFE7CF] bg-cover bg-center"
+      className="flex flex-none bg-contain bg-center bg-no-repeat"
       style={{
         width: size,
         height: size,
-        borderRadius: radius,
-        backgroundImage: `url(${APP_ICON})`,
+        backgroundImage: `url(${LOGO_MARK})`,
       }}
     />
   );
@@ -333,8 +368,8 @@ export default function Home() {
       {/* 헤더 */}
       <header className="sticky top-0 z-40 border-b border-[#E5E8EB] bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-[68px] max-w-[1240px] items-center justify-between px-6 md:px-11">
-          <div className="flex items-center gap-[9px]">
-            <BrandMark size={30} radius={9} />
+          <div className="flex items-center gap-[7px]">
+            <BrandMark size={42} />
             <span className="text-[16.5px] font-bold tracking-[-0.3px] text-[#191F28]">
               포메
             </span>
@@ -604,25 +639,69 @@ export default function Home() {
                 준비하고 있어요. 초기 테스터에게 가장 먼저 열어드립니다.
               </span>
             </div>
-            <div className="flex w-full flex-col gap-3.5 rounded-[18px] border border-white/[.12] bg-white/[.06] p-5 md:w-[300px] md:flex-none">
-              <span className="text-[12.5px] font-semibold text-[#8B95A1]">
-                오늘의 스터디룸
-              </span>
-              {STUDY_ROOM.map((p) => (
-                <div key={p.name} className="flex items-center justify-between">
-                  <span className="flex items-center gap-[9px] text-sm text-[#F9FAFB]">
-                    <span
+            <div className="flex w-full flex-col gap-3 rounded-[18px] border border-white/[.12] bg-white/[.06] p-5 md:w-[344px] md:flex-none">
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-[12.5px] font-semibold text-[#8B95A1]">
+                  오늘의 스터디룸
+                </span>
+                <span className="text-[11.5px] font-semibold text-[#4593FC]">
+                  2명 집중 중
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {STUDY_ROOM.map((p) => (
+                  <div
+                    key={p.name}
+                    className="relative aspect-[4/3] overflow-hidden rounded-[11px] bg-[linear-gradient(#F4F0E8_0%,#E7E0D3_58%,#D2C9B9_58%,#C6BCAA_100%)]"
+                  >
+                    <div
                       aria-hidden="true"
-                      className="h-8 w-8 rounded-full bg-[#FFF4E5] bg-[length:86%] bg-center bg-no-repeat"
+                      className={`absolute inset-x-[7%] top-[7%] bottom-[26%] bg-contain bg-bottom bg-no-repeat ${
+                        p.flip ? "-scale-x-100" : ""
+                      }`}
                       style={{ backgroundImage: `url(${p.img})` }}
                     />
-                    {p.name}
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-[11px]"
+                      style={{ boxShadow: `inset 0 0 0 1.5px ${p.color}` }}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-1.5 bg-[rgba(11,15,20,.78)] px-2 py-[5px]">
+                      <span className="flex min-w-0 items-center gap-[5px]">
+                        <span
+                          className="h-[5px] w-[5px] flex-none rounded-full"
+                          style={{ background: p.color }}
+                        />
+                        <span className="truncate text-[11px] font-semibold text-[#F9FAFB]">
+                          {p.name}
+                        </span>
+                      </span>
+                      <span
+                        className="flex-none text-[10.5px] tabular-nums"
+                        style={{ color: p.color }}
+                      >
+                        {p.time}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                {ROOM_LEGEND.map((l) => (
+                  <span
+                    key={l.label}
+                    className="flex items-center gap-[5px] text-[11px] text-[#8B95A1]"
+                  >
+                    <LegendDot color={l.color} />
+                    {l.label}
                   </span>
-                  <span className="text-[13px] text-[#4593FC] tabular-nums">
-                    {p.time}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
+              <span className="text-[11.5px] leading-[1.55] text-[#6B7684]">
+                영상은 오가지 않아요. 집중 상태와 순공시간만 공유됩니다.
+              </span>
             </div>
           </div>
         </div>
@@ -883,8 +962,8 @@ export default function Home() {
 
       {/* 푸터 */}
       <footer className="flex flex-col items-center gap-4 border-t border-[#E5E8EB] bg-white px-6 py-[34px] md:flex-row md:items-center md:justify-between md:px-11">
-        <div className="flex items-center gap-[9px]">
-          <BrandMark size={26} radius={7} />
+        <div className="flex items-center gap-[7px]">
+          <BrandMark size={36} />
           <span className="text-[14.5px] font-bold text-[#191F28]">포메</span>
         </div>
         <div className="flex items-center gap-6">
