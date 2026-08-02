@@ -292,6 +292,7 @@ function ArrowIcon() {
   );
 }
 
+/* 클로즈 베타 후기 섹션 전용 — 섹션과 함께 되살린다
 function ArrowSmallIcon() {
   return (
     <svg width="18" height="10" viewBox="0 0 18 10" aria-hidden="true">
@@ -306,6 +307,7 @@ function ArrowSmallIcon() {
     </svg>
   );
 }
+*/
 
 function PlayIcon() {
   return (
@@ -369,7 +371,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-[#E5E8EB] bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-[68px] max-w-[1240px] items-center justify-between px-6 md:px-11">
           <div className="flex items-center gap-[7px]">
-            <BrandMark size={42} />
+            <BrandMark size={38} />
             <span className="text-[16.5px] font-bold tracking-[-0.3px] text-[#191F28]">
               포메
             </span>
@@ -789,7 +791,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 먼저 써본 사람들 */}
+      {/* TODO: 클로즈 베타 후기 — 실제 테스터 반응이 모이면 되살린다 (ArrowSmallIcon도 함께 주석 해제)
       <section className="bg-white px-6 pt-[100px] md:px-11 md:pt-[150px]">
         <div className="mx-auto max-w-[1050px]">
           <div className="flex flex-col items-center gap-3 text-center">
@@ -864,6 +866,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* 비교 */}
       <section className="mt-[100px] border-t border-[#E5E8EB] bg-[#F9FAFB] px-6 py-16 md:mt-[150px] md:px-11 md:pt-[120px] md:pb-[130px]">
@@ -966,7 +969,7 @@ export default function Home() {
       {/* 푸터 */}
       <footer className="flex flex-col items-center gap-4 border-t border-[#E5E8EB] bg-white px-6 py-[34px] md:flex-row md:items-center md:justify-between md:px-11">
         <div className="flex items-center gap-[7px]">
-          <BrandMark size={36} />
+          <BrandMark size={33} />
           <span className="text-[14.5px] font-bold text-[#191F28]">포메</span>
         </div>
         <div className="flex items-center gap-6">

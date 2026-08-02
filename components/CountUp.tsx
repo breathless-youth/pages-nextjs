@@ -38,11 +38,8 @@ export function CountUp({
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setValue(to);
-      return;
-    }
+    // 모션을 줄이는 설정에서는 애니메이션 없이 렌더 시점에 목표값을 그린다
+    if (!inView || reduce) return;
     const controls = animate(0, to, {
       duration,
       ease: [0.16, 1, 0.3, 1],
@@ -53,7 +50,7 @@ export function CountUp({
 
   return (
     <span ref={ref} className={className}>
-      {formatters[variant](value)}
+      {formatters[variant](reduce && inView ? to : value)}
     </span>
   );
 }
