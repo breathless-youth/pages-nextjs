@@ -6,6 +6,8 @@ export const SITE = {
   privacyPath: "/privacy",
   // 커스텀 도메인 없이 Vercel 기본 도메인을 정식 URL로 사용하기로 확정 (2026-07-26)
   siteUrl: "https://pages-nextjs-liart.vercel.app",
+  // GA4 측정 ID. 공개되는 값이라 환경변수로 빼지 않는다
+  gaMeasurementId: "G-5TDRMXZEVE",
   // TODO: 스토어 등록 후 실제 URL로 교체
   appStoreUrl: null as string | null,
   playStoreUrl: null as string | null,

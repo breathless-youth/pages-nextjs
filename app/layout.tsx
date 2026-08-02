@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { GeistMono } from "geist/font/mono";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE } from "@/lib/site";
 import { APP_DESCRIPTION } from "@/lib/content";
 import "./globals.css";
@@ -32,6 +33,10 @@ export default function RootLayout({
       className={`${pretendard.variable} ${GeistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+      {/* 로컬 개발 트래픽이 GA4에 섞이지 않도록 프로덕션 빌드에서만 로드한다 */}
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId={SITE.gaMeasurementId} />
+      )}
     </html>
   );
 }
