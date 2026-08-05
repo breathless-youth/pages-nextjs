@@ -16,7 +16,7 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.siteUrl),
   title: {
-    default: "포메 — 순공시간을 증명하는 공부 타이머",
+    default: "포메(FocusMakers) - 순공, 집중, 타이머",
     template: "%s | 포메",
   },
   description: `${APP_DESCRIPTION}, 포메. 순공 타이머 · 공부 기록 · 집중률 통계.`,

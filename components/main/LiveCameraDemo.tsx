@@ -201,7 +201,7 @@ export function LiveCameraDemo() {
                   LIVE
                 </span>
                 <span className="flex h-7 items-center rounded-lg bg-black/55 px-[11px] text-[11.5px] font-semibold text-[#B0B8C1]">
-                  얼굴 인식 없음 · 기기 안에서만 분석
+                  얼굴이 안 나와도 괜찮아요
                 </span>
               </div>
 
