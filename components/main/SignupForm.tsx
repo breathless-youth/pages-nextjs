@@ -180,15 +180,14 @@ export function SignupForm() {
         </p>
       )}
 
+      {/* WAITLIST_COUNT와 함께 되살린다
       <p className="text-center text-[13px] leading-[1.6] text-[#8B95A1]">
-        {/* WAITLIST_COUNT와 함께 되살린다
         <span className="font-bold text-[#191F28]">
           {WAITLIST_COUNT.toLocaleString("ko-KR")}명
         </span>
-        이 이미 사전예약했어요 ·{" "}
-        */}
-        언제든 수신 해지 가능
+        이 이미 사전예약했어요 · 언제든 수신 해지 가능
       </p>
+      */}
     </form>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { LiveCameraDemo } from "@/components/main/LiveCameraDemo";
 import { SignupForm } from "@/components/main/SignupForm";
@@ -19,7 +20,7 @@ const NAV = [
   { href: "#faq", label: "FAQ" },
 ];
 
-const TRUST_BADGES = ["얼굴 인식 없음", "기기 안에서만 처리", "결제 정보 없음"];
+const TRUST_BADGES = ["얼굴 인식 없음", "기기 안에서만 처리", "자동 타이머 측정"];
 
 const HERO_BAR: { w: number; color: string }[] = [
   { w: 18, color: "#4593FC" },
@@ -47,8 +48,8 @@ const STEP_BREAKDOWN = [
 const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: string }[] = [
   {
     tint: "#E8F3FF",
-    title: "실시간 집중 감지",
-    body: "얼굴은 측정하지 않습니다. 자세와 움직임만으로 집중이 끊긴 순간을 잡아냅니다.",
+    title: "실시간 집중 측정",
+    body: "얼굴은 측정하지 않아요. 자세와 움직임만으로 집중이 끊긴 순간을 잡아내요.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="8" fill="none" stroke="#1B64DA" strokeWidth="2" />
@@ -59,7 +60,7 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   {
     tint: "#FFF4E5",
     title: "5개 상태로 구분",
-    body: "집중, 비집중 3종(자리 이탈·휴대폰 사용·기기 조작), 그리고 직접 누른 일시정지까지 나눠서 기록합니다.",
+    body: "집중, 비집중 3종(자리 이탈·휴대폰 사용·기기 조작), 그리고 직접 누른 일시정지까지 나눠서 기록해요.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M4 18h4V9H4v9ZM10 18h4V4h-4v14ZM16 18h4v-6h-4v6Z" fill="#B36100" />
@@ -69,7 +70,7 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   {
     tint: "#E8F3FF",
     title: "순공 / 총공부",
-    body: "순공시간과 총 공부 시간을 분리해 진짜 집중한 시간을 측정합니다.",
+    body: "순공시간과 총 공부 시간을 분리해 진짜 집중한 시간을 측정해요.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="8.5" fill="none" stroke="#1B64DA" strokeWidth="2" />
@@ -98,7 +99,7 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   {
     tint: "#FFF4E5",
     title: "연속 공부 스트릭",
-    body: "하루 10분이면 유지됩니다. 월 달력과 주간 도트로 흐름이 보여요.",
+    body: "하루 10분이면 유지돼요. 월 달력과 주간 도트로 흐름이 보여요.",
     icon: (
       <svg width="18" height="21" viewBox="0 0 34 40" aria-hidden="true">
         <path
@@ -115,7 +116,7 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   {
     tint: "#E8F3FF",
     title: "얼굴 없이, 기기 안에서만",
-    body: "얼굴을 인식하거나 저장하지 않습니다. 분석은 기기 안에서만 이뤄지고 남는 건 시간 기록뿐이에요.",
+    body: "얼굴을 인식하거나 저장하지 않아요. 분석은 기기 안에서만 이뤄지고 남는 건 시간 기록뿐이에요.",
     icon: (
       <svg width="18" height="20" viewBox="0 0 20 22" aria-hidden="true">
         <path
@@ -185,34 +186,14 @@ const REPORT_POINTS = [
   "일·주·월 누적 기록과 스트릭",
 ];
 
-const REPORT_BAR: { w: number; color: string }[] = [
-  { w: 20, color: "#1B64DA" },
-  { w: 4, color: "#FF8A00" },
-  { w: 18, color: "#1B64DA" },
-  { w: 3, color: "#FF8A00" },
-  { w: 14, color: "#1B64DA" },
-  { w: 6, color: "#FF8A00" },
-  { w: 12, color: "#1B64DA" },
-  { w: 3, color: "#8B95A1" },
-  { w: 16, color: "#1B64DA" },
-  { w: 4, color: "#FF8A00" },
-];
-
-const REPORT_BREAKDOWN = [
-  { label: "자리 이탈", value: "2회 · 9분 40초", color: "#FF8A00" },
-  { label: "휴대폰 사용", value: "2회 · 6분 12초", color: "#FF8A00" },
-  { label: "기기 조작", value: "1회 · 2분 8초", color: "#FF8A00" },
-  { label: "수동 일시정지", value: "1회 · 3분", color: "#8B95A1" },
-];
-
 const COMPARISON = [
   {
     k: "측정 방식",
-    a: "카메라 자동 감지 + 수동 시작/정지",
+    a: "카메라 자동 측정 + 수동 시작/정지",
     b: "수동 시작/정지",
     c: "수동 시작/정지",
   },
-  { k: "딴짓 시간 제외", a: "자동 제외", b: "안 됨", c: "본인 판단" },
+  { k: "비집중 시간 제외", a: "자동 제외", b: "안 됨", c: "본인 판단" },
   { k: "상태 구분", a: "집중 + 비집중 3종 + 일시정지", b: "없음", c: "없음" },
   { k: "순공 · 총공부 구분", a: "함께 표시", b: "한 가지만", c: "한 가지만" },
   { k: "얼굴 인식 · 영상 저장", a: "둘 다 없음", b: "해당 없음", c: "실시간 송출" },
@@ -222,27 +203,27 @@ const COMPARISON = [
 const FAQS = [
   {
     q: "얼굴을 인식하나요?",
-    a: "아니요. 포메는 얼굴을 인식하거나 측정하지 않습니다. 자세와 움직임, 기기·화면 상태만으로 판단해요. 얼굴 데이터가 만들어지지 않으니 유출될 것도 없습니다.",
+    a: "아니요. 포메는 얼굴을 인식하거나 측정하지 않아요. 자세와 움직임, 기기·화면 상태만으로 판단해요. 얼굴 데이터가 만들어지지 않으니 유출될 것도 없어요.",
   },
   {
     q: "카메라 영상이 서버로 올라가나요?",
-    a: "아니요. 분석은 기기 안에서만 이뤄지고 영상은 저장되거나 전송되지 않습니다. 남는 것은 집중·비집중 시간 기록뿐이에요.",
+    a: "아니요. 분석은 기기 안에서만 이뤄지고 영상은 저장되거나 전송되지 않아요. 남는 것은 집중·비집중 시간 기록뿐이에요.",
   },
   {
     q: "쉬는 시간은 어떻게 처리하나요?",
-    a: "일시정지를 직접 누르면 순공시간과 총 공부 시간이 모두 멈추고 회색으로 표시됩니다. 자동 감지된 비집중(오렌지)은 순공시간만 멈추고 총 공부 시간은 계속 흘러가요.",
+    a: "일시정지를 직접 누르면 순공시간과 총 공부 시간이 모두 멈추고 회색으로 표시돼요. 자동으로 판단한 비집중(오렌지)은 순공시간만 멈추고 총 공부 시간은 계속 흘러가요.",
   },
   {
     q: "배터리는 많이 쓰나요?",
-    a: "저해상도 프레임만 간격을 두고 분석합니다. 3시간 세션 기준 약 12~18% 정도이며, 충전 중 사용을 권장해요.",
+    a: "저해상도 프레임만 간격을 두고 분석해요. 3시간 세션 기준 약 12~18% 정도이며, 충전 중 사용을 권장해요.",
   },
   {
     q: "요금이 청구되나요?",
-    a: "아니요. 지금은 모든 기능이 무료이고 결제 정보도 받지 않습니다. 언젠가 유료 플랜이 생기면 최소 한 달 전에 안내드리고, 자동 청구는 하지 않아요.",
+    a: "아니요. 지금은 모든 기능이 무료이고 결제 정보도 받지 않아요. 언젠가 유료 플랜이 생기면 최소 한 달 전에 안내드리고, 자동 청구는 하지 않아요.",
   },
   {
     q: "테스터는 어떻게 선발되나요?",
-    a: "사전예약 순서와 시험 유형 분포를 함께 고려해 200명을 선발합니다. 선발 여부는 이메일로 개별 안내드려요.",
+    a: "사전예약 순서와 시험 유형 분포를 함께 고려해 200명을 선발해요. 선발 여부는 이메일로 개별 안내드려요.",
   },
 ];
 
@@ -407,7 +388,7 @@ export default function Home() {
             <br />왜 성적은 그대로일까
           </h1>
           <p className="mt-[22px] max-w-[600px] text-center text-[17px] leading-[1.65] text-pretty text-[#6B7684] md:text-[19px]">
-            스톱워치는 내가 딴짓하는 걸 모릅니다.{" "}
+            스톱워치는 내가 집중을 놓친 시간까지는 몰라요.{" "}
             {/* 좁은 화면에서는 자연스럽게 흐르도록 데스크톱에서만 줄을 끊는다 */}
             <br className="hidden md:inline" />
             포메는 카메라로{" "}
@@ -520,7 +501,7 @@ export default function Home() {
                 </span>
                 <span className="text-[15.5px] leading-[1.7] text-[#6B7684]">
                   거치대에 올려두고 버튼 한 번. 과목 입력이나 목표 설정 같은 준비
-                  과정이 없습니다.
+                  과정이 없어요.
                 </span>
               </div>
               <div className="flex h-[150px] w-full flex-none items-center justify-center rounded-[18px] bg-[#E8F3FF] md:w-[300px]">
@@ -545,12 +526,12 @@ export default function Home() {
                     2
                   </span>
                   <span className="text-[20px] font-bold text-[#191F28] md:text-[22px]">
-                    흐트러지면 순공시간이 멈춥니다
+                    흐트러지면 순공시간이 멈춰요
                   </span>
                 </span>
                 <span className="text-[15.5px] leading-[1.7] text-[#6B7684]">
                   자리를 비우거나 휴대폰을 들면 오렌지로 바뀌고 순공시간만
-                  정지합니다. 직접 누른 일시정지는 회색으로, 순공과 총 공부 시간이
+                  멈춰요. 직접 누른 일시정지는 회색으로, 순공과 총 공부 시간이
                   모두 멈춰요.
                 </span>
               </div>
@@ -579,7 +560,7 @@ export default function Home() {
                   </span>
                 </span>
                 <span className="text-[15.5px] leading-[1.7] text-[#6B7684]">
-                  타임라인과 비집중 유형별 횟수·시간이 남습니다. 매일 쌓이면 내가
+                  타임라인과 비집중 유형별 횟수·시간이 남아요. 매일 쌓이면 내가
                   무너지는 시간대까지 보이기 시작해요.
                 </span>
               </div>
@@ -608,7 +589,7 @@ export default function Home() {
               기능
             </span>
             <h2 className="text-[26px] leading-[1.28] font-bold tracking-[-1px] text-[#191F28] md:text-[40px] md:tracking-[-1.4px]">
-              측정만 하지 않습니다
+              측정만 하지 않아요
             </h2>
           </div>
           <div className="mt-10 grid gap-3.5 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
@@ -641,7 +622,7 @@ export default function Home() {
               </span>
               <span className="text-[15.5px] leading-[1.7] text-[#B0B8C1]">
                 친구·스터디원과 순공시간을 함께 쌓고 서로의 집중을 확인하는 모드를
-                준비하고 있어요. 초기 테스터에게 가장 먼저 열어드립니다.
+                준비하고 있어요. 초기 테스터에게 가장 먼저 열어드려요.
               </span>
             </div>
             <div className="flex w-full flex-col gap-3 rounded-[18px] border border-white/[.12] bg-white/[.06] p-5 md:w-[344px] md:flex-none">
@@ -705,7 +686,7 @@ export default function Home() {
                 ))}
               </div>
               <span className="text-[11.5px] leading-[1.55] text-[#6B7684]">
-                영상은 오가지 않아요. 집중 상태와 순공시간만 공유됩니다.
+                영상은 오가지 않아요. 집중 상태와 순공시간만 공유돼요.
               </span>
             </div>
           </div>
@@ -720,11 +701,11 @@ export default function Home() {
               공부 결과 리포트
             </span>
             <h2 className="text-[26px] leading-[1.32] font-bold tracking-[-1.1px] text-[#191F28] md:text-[32px]">
-              왜 흐트러졌는지까지 남깁니다
+              왜 흐트러졌는지까지 남겨요
             </h2>
             <p className="text-[15px] leading-[1.7] text-[#6B7684] md:text-base">
               세션이 끝나면 집중·비집중 구간이 타임라인으로, 원인은 유형별 횟수와
-              시간으로 정리됩니다. 다음 세션에서 무엇을 고칠지가 명확해져요.
+              시간으로 정리돼요. 다음 세션에서 무엇을 고칠지가 명확해져요.
             </p>
             <div className="flex flex-col gap-2.5">
               {REPORT_POINTS.map((p) => (
@@ -738,55 +719,20 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="w-full flex-none rounded-[22px] bg-white p-[26px] shadow-[0_16px_44px_rgba(0,0,0,.1)] md:w-[340px]">
-            <span className="text-[13.5px] font-medium text-[#6B7684]">순공시간</span>
-            <div className="mt-1 flex items-baseline gap-2.5">
-              <span className="text-[32px] leading-[1.2] font-bold tracking-[-1px] text-[#191F28]">
-                1시간 24분
-              </span>
-              <span className="rounded-full bg-[#E8F3FF] px-[9px] py-[3px] text-xs font-semibold text-[#1B64DA]">
-                80% 집중
-              </span>
+          <div className="flex w-full flex-none flex-col items-center gap-3 md:w-[340px]">
+            <div className="w-full overflow-hidden rounded-[22px] bg-white shadow-[0_16px_44px_rgba(0,0,0,.1)]">
+              <Image
+                src="/pome/report-screen.webp"
+                alt="포메 공부 결과 화면 — 순공시간 1시간 24분, 80% 집중, 집중·비집중 타임라인과 비집중 유형별 내역"
+                width={640}
+                height={698}
+                className="block w-full"
+              />
             </div>
-            <span className="text-[12.5px] text-[#8B95A1]">
-              총 공부 1시간 45분 · 21:03 – 22:48
+            <span className="flex items-center gap-[6px] text-[12.5px] text-[#8B95A1]">
+              <CheckIcon color="#12B76A" size={13} strokeWidth={3} />
+              실제 앱 화면 그대로예요
             </span>
-            <div className="mt-5 flex h-3.5 overflow-hidden rounded-full">
-              {REPORT_BAR.map((seg, i) => (
-                <span key={i} style={{ width: `${seg.w}%`, background: seg.color }} />
-              ))}
-            </div>
-            <div className="mt-2.5 flex flex-wrap gap-3">
-              <span className="flex items-center gap-[5px] text-[11.5px] text-[#6B7684]">
-                <LegendDot color="#1B64DA" />
-                집중
-              </span>
-              <span className="flex items-center gap-[5px] text-[11.5px] text-[#6B7684]">
-                <LegendDot color="#FF8A00" />
-                비집중
-              </span>
-              <span className="flex items-center gap-[5px] text-[11.5px] text-[#6B7684]">
-                <LegendDot color="#8B95A1" />
-                일시정지
-              </span>
-            </div>
-            <div className="mt-[18px] rounded-[14px] bg-[#F9FAFB] px-3.5">
-              <div className="pt-3 pb-2 text-[12.5px] font-bold text-[#191F28]">
-                비집중 18분 · 일시정지 3분
-              </div>
-              {REPORT_BREAKDOWN.map((r) => (
-                <div
-                  key={r.label}
-                  className="flex items-center justify-between border-t border-[#E5E8EB] py-2.5"
-                >
-                  <span className="flex items-center gap-2 text-[13.5px] text-[#191F28]">
-                    <Dot color={r.color} />
-                    {r.label}
-                  </span>
-                  <span className="text-[12.5px] text-[#6B7684]">{r.value}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -961,7 +907,7 @@ export default function Home() {
           <br />진짜 공부는 몇 시간이었을까요
         </h2>
         <p className="max-w-[560px] text-center text-[15.5px] leading-[1.7] text-[#6B7684] md:text-[17px]">
-          사전예약하면 출시 알림과 초기 테스터 선발 안내를 보내드립니다.
+          사전예약하면 출시 알림과 초기 테스터 선발 안내를 보내드려요.
         </p>
         <SignupForm />
       </section>

@@ -78,14 +78,14 @@ const SCENE_ORDER: Mode[] = ["focus", "away", "phone", "pause"];
 
 const PILL_LABEL: Record<Mode, string> = {
   focus: "집중 측정 중",
-  away: "자리 이탈 감지",
-  phone: "휴대폰 사용 감지",
+  away: "자리 이탈",
+  phone: "휴대폰 사용",
   pause: "일시정지",
 };
 
 const HINT: Record<Tone, string> = {
-  focus: "집중 측정 중 — 순공시간이 흐릅니다",
-  alert: "자동 감지된 비집중 — 순공시간만 멈추고 총 공부 시간은 계속 흘러요",
+  focus: "집중 측정 중 — 순공시간이 흘러요",
+  alert: "자동으로 판단한 비집중 — 순공시간만 멈추고 총 공부 시간은 계속 흘러요",
   pause: "수동 일시정지 — 순공시간과 총 공부 시간이 모두 멈춰요",
 };
 
@@ -150,12 +150,12 @@ export function LiveCameraDemo() {
             측정 화면
           </span>
           <h2 className="text-[28px] leading-[1.3] font-bold tracking-[-1px] text-[#F9FAFB] md:text-[38px] md:tracking-[-1.3px]">
-            카메라가 보고, 시간이 쌓입니다
+            카메라가 보고, 시간이 쌓여요
           </h2>
           <p className="max-w-[640px] text-[15px] leading-[1.7] text-[#B0B8C1] md:text-[16.5px]">
-            왼쪽은 카메라가 보고 있는 장면, 오른쪽은 그 순간의 앱 화면입니다.
-            아래 버튼으로 상황을 바꿔보면 순공시간이 어떻게 반응하는지 바로
-            보입니다.
+            왼쪽은 카메라가 보고 있는 장면, 오른쪽은 그 순간 앱 화면이 어떻게
+            바뀌는지 보여드려요. 아래 버튼으로 상황을 바꿔보면 순공시간이
+            어떻게 반응하는지 바로 확인할 수 있어요.
           </p>
         </div>
 
