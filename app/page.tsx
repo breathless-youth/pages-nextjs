@@ -189,16 +189,41 @@ const REPORT_POINTS = [
 const COMPARISON = [
   {
     k: "측정 방식",
-    a: "카메라 자동 측정 + 수동 시작/정지",
-    b: "수동 시작/정지",
-    c: "수동 시작/정지",
+    a: { text: "카메라 자동 측정 + 수동 시작/정지", status: "good" },
+    b: { text: "수동 시작/정지", status: "bad" },
+    c: { text: "수동 시작/정지", status: "bad" },
   },
-  { k: "비집중 시간 제외", a: "자동 제외", b: "안 됨", c: "본인 판단" },
-  { k: "상태 구분", a: "집중 + 비집중 3종 + 일시정지", b: "없음", c: "없음" },
-  { k: "순공 · 총공부 구분", a: "함께 표시", b: "한 가지만", c: "한 가지만" },
-  { k: "얼굴 인식 · 영상 저장", a: "둘 다 없음", b: "해당 없음", c: "실시간 송출" },
-  { k: "혼자서도 가능", a: "가능", b: "가능", c: "상대 필요" },
-];
+  {
+    k: "비집중 시간 제외",
+    a: { text: "자동 제외", status: "good" },
+    b: { text: "안 됨", status: "bad" },
+    c: { text: "본인 판단", status: "partial" },
+  },
+  {
+    k: "상태 구분",
+    a: { text: "집중 + 비집중 3종 + 일시정지", status: "good" },
+    b: { text: "없음", status: "bad" },
+    c: { text: "없음", status: "bad" },
+  },
+  {
+    k: "순공 · 총공부 구분",
+    a: { text: "함께 표시", status: "good" },
+    b: { text: "한 가지만", status: "bad" },
+    c: { text: "한 가지만", status: "bad" },
+  },
+  {
+    k: "얼굴 인식 · 영상 저장",
+    a: { text: "둘 다 없음", status: "good" },
+    b: { text: "해당 없음", status: "neutral" },
+    c: { text: "실시간 송출", status: "bad" },
+  },
+  {
+    k: "혼자서도 가능",
+    a: { text: "가능", status: "good" },
+    b: { text: "가능", status: "good" },
+    c: { text: "상대 필요", status: "bad" },
+  },
+] as const;
 
 const FAQS = [
   {
@@ -247,6 +272,61 @@ function CheckIcon({
         strokeLinejoin="round"
       />
     </svg>
+  );
+}
+
+function XIcon({
+  color,
+  size = 15,
+  strokeWidth = 2.6,
+}: {
+  color: string;
+  size?: number;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M6 6l12 12M18 6 6 18"
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ComparisonMark({
+  status,
+}: {
+  status: "good" | "bad" | "partial" | "neutral";
+}) {
+  if (status === "good") {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E7F9F0]">
+        <CheckIcon color="#12B76A" size={12} strokeWidth={2.8} />
+      </span>
+    );
+  }
+  if (status === "bad") {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F2F4F6]">
+        <XIcon color="#B0B8C1" size={11} strokeWidth={2.4} />
+      </span>
+    );
+  }
+  if (status === "partial") {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FFF4E5] text-[11px] font-bold text-[#B36100]">
+        △
+      </span>
+    );
+  }
+  return (
+    <span className="flex h-5 w-5 items-center justify-center text-[13px] font-semibold text-[#B0B8C1]">
+      –
+    </span>
   );
 }
 
@@ -849,14 +929,17 @@ export default function Home() {
                   <span className="px-4 py-[17px] text-[14.5px] font-semibold text-[#191F28] md:px-[22px]">
                     {row.k}
                   </span>
-                  <span className="bg-[#F3F8FE] px-3.5 py-[17px] text-center text-sm font-semibold text-[#1B64DA]">
-                    {row.a}
+                  <span className="flex flex-col items-center justify-center gap-1.5 bg-[#F3F8FE] px-3.5 py-[17px] text-center text-sm font-semibold text-[#1B64DA]">
+                    <ComparisonMark status={row.a.status} />
+                    {row.a.text}
                   </span>
-                  <span className="px-3.5 py-[17px] text-center text-sm text-[#8B95A1]">
-                    {row.b}
+                  <span className="flex flex-col items-center justify-center gap-1.5 px-3.5 py-[17px] text-center text-sm text-[#8B95A1]">
+                    <ComparisonMark status={row.b.status} />
+                    {row.b.text}
                   </span>
-                  <span className="px-3.5 py-[17px] text-center text-sm text-[#8B95A1]">
-                    {row.c}
+                  <span className="flex flex-col items-center justify-center gap-1.5 px-3.5 py-[17px] text-center text-sm text-[#8B95A1]">
+                    <ComparisonMark status={row.c.status} />
+                    {row.c.text}
                   </span>
                 </div>
               ))}
