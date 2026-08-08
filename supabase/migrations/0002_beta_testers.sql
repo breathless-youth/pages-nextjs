@@ -51,8 +51,19 @@ drop policy if exists beta_testers_insert_anon on public.beta_testers;
 
 -- 선착순 번호. created_at 순서로 매기며, 초대 대상을 고를 때 쓴다.
 -- 컬럼으로 박으면 삭제·복구 시 어긋나므로 뷰로 계산한다.
-create or replace view public.beta_testers_ranked as
+--
+-- security_invoker = true 가 중요하다. 뷰는 기본적으로 "소유자 권한"으로
+-- 실행돼서 밑에 깔린 테이블의 RLS 를 우회한다 — 그대로 두면 public 스키마의
+-- 뷰가 PostgREST 로 노출되면서 anon 이 신청자 전체를 읽을 수 있다.
+-- invoker 로 바꾸면 조회한 역할의 RLS 가 적용돼 anon 에게는 0행이 된다.
+create or replace view public.beta_testers_ranked
+  with (security_invoker = true) as
   select
     t.*,
     row_number() over (order by t.created_at) as seat_no
   from public.beta_testers t;
+
+-- PostgREST 로 뷰가 아예 안 보이게 접근 자체를 회수한다 (security_invoker 와
+-- 이중 방어). 대시보드/service_role 조회에는 영향 없다.
+revoke all on public.beta_testers_ranked from anon, authenticated;
+revoke all on public.beta_testers from anon, authenticated;

@@ -14,7 +14,12 @@ import { createClient } from "@supabase/supabase-js";
  */
 
 const url = process.env.SUPABASE_URL;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+// Supabase 가 API 키 이름을 바꾸는 중이다 — 새 프로젝트는 대시보드에
+// "secret key"(sb_secret_…), 기존 프로젝트는 "service_role"(eyJ…) 로 뜬다.
+// 둘 다 RLS 를 우회하므로 어느 쪽 이름으로 넣어도 받는다.
+const serviceRoleKey =
+  process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 /** 환경변수가 없으면 null — 라우트에서 503 으로 응답해 폼이 조용히 실패하지 않게 한다 */
 export const supabaseAdmin =
