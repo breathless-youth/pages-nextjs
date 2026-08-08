@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
+import { BackToTop } from "@/components/landing-v2/BackToTop";
 import { BetaProvider } from "@/components/landing-v2/BetaContext";
 import { BetaSignup } from "@/components/landing-v2/BetaSignup";
 import { RecordsPhone, ResultPhone } from "@/components/landing-v2/PhoneMockups";
@@ -27,25 +27,12 @@ export const metadata: Metadata = {
     "카메라가 공부를 인식해, 집중하는 동안만 타이머가 흐르는 공부 타이머 포메. 순공시간과 집중률이 자동으로 기록돼요. 베타 기간 동안 전 기능 무료로 체험할 수 있어요.",
 };
 
-/** 헤더·푸터 로고 마크. 앱 아이콘 원본에서 복숭아색 배경판을 지운 캐릭터 단독 이미지 */
-const LOGO_MARK = "/pome/logo-mark.webp";
-
 const NAV = [
   { href: "#how", label: "참여 방법" },
   { href: "#faq", label: "FAQ" },
 ];
 
 const copy = betaCopy();
-
-function BrandMark({ size }: { size: number }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="flex flex-none bg-contain bg-center bg-no-repeat"
-      style={{ width: size, height: size, backgroundImage: `url(${LOGO_MARK})` }}
-    />
-  );
-}
 
 function JsonLd() {
   const data = [
@@ -136,15 +123,14 @@ export default function Home() {
         {/* 헤더 */}
         <header className="sticky top-0 z-40 bg-white/[.86] shadow-[0_1px_0_#EFF1F3] backdrop-blur-[12px]">
           <div className="mx-auto flex h-16 max-w-[1120px] items-center justify-between gap-3 px-3.5 md:px-5">
-            <div className="flex min-w-0 flex-none items-center gap-[7px]">
-              <BrandMark size={34} />
+            <div className="flex min-w-0 flex-none items-baseline gap-[9px]">
               <a
                 href="#top"
                 className="text-[18px] font-bold tracking-[-0.2px] whitespace-nowrap text-[#191F28] transition-colors hover:text-[#1B64DA]"
               >
                 FocusMakers
               </a>
-              <span className="hidden text-[13px] whitespace-nowrap text-[#8B95A1] sm:inline">
+              <span className="text-[13px] whitespace-nowrap text-[#8B95A1] max-[600px]:hidden">
                 포메
               </span>
             </div>
@@ -447,7 +433,13 @@ export default function Home() {
             className="scroll-mt-[72px] bg-[#F9FAFB] px-5 pt-20 pb-[88px] shadow-[inset_0_1px_0_#EFF1F3,inset_0_-1px_0_#EFF1F3]"
           >
             <div className="mx-auto flex max-w-[640px] flex-col items-center gap-5 rounded-3xl bg-white px-6 py-9 text-center shadow-[inset_0_0_0_1px_#E5E8EB,0_18px_44px_rgba(25,31,40,.08)] md:px-12 md:py-13">
-              <BrandMark size={64} />
+              <Image
+                src="/pome/mascot.webp"
+                alt="포메 마스코트"
+                width={64}
+                height={64}
+                className="block h-16 w-16 rounded-full shadow-[0_0_0_1px_#E5E8EB]"
+              />
               <h2 className="text-[26px] leading-[1.28] font-bold tracking-[-0.8px] break-keep md:text-4xl">
                 지금 바로 <span className="text-[#1B64DA]">순공시간을</span>{" "}
                 측정해보세요.
@@ -459,39 +451,27 @@ export default function Home() {
         </main>
 
         {/* 푸터 */}
-        <footer className="flex flex-col items-center gap-4 border-t border-[#EFF1F3] bg-white px-6 py-[34px] md:flex-row md:justify-between md:px-11">
-          <div className="flex flex-col gap-1.5">
-            <span className="text-base font-bold">FocusMakers</span>
-            <span className="text-[13px] text-[#8B95A1]">
-              포메 · 순공시간 자동 측정
-            </span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5 md:items-end">
-            <div className="flex items-center gap-6">
-              <Link
-                href="/terms"
-                className="text-[13.5px] text-[#6B7684] transition-colors hover:text-[#191F28]"
-              >
-                이용약관
-              </Link>
-              <Link
-                href={SITE.privacyPath}
-                className="text-[13.5px] text-[#6B7684] transition-colors hover:text-[#191F28]"
-              >
-                개인정보처리방침
-              </Link>
-              <Link
-                href="/support"
-                className="text-[13.5px] text-[#6B7684] transition-colors hover:text-[#191F28]"
-              >
-                문의
-              </Link>
+        <footer className="flex flex-col items-start justify-between gap-4 border-t border-[#EFF1F3] px-5 pt-9 pb-14 md:flex-row md:items-start">
+          <div className="mx-auto flex w-full max-w-[1120px] flex-wrap items-start justify-between gap-4">
+            <div className="flex flex-col gap-1.5">
+              <span className="text-base font-bold">FocusMakers</span>
+              <span className="text-[13px] text-[#8B95A1]">
+                포메 · 순공시간 자동 측정
+              </span>
             </div>
-            <span className="text-xs text-[#8B95A1]">
-              문의 {SITE.supportEmail} · © 2026 FocusMakers
-            </span>
+            <div className="flex flex-col items-end gap-1.5">
+              <a
+                href={`mailto:${SITE.supportEmail}`}
+                className="text-[13px] text-[#6B7684] transition-colors hover:text-[#191F28]"
+              >
+                문의 {SITE.supportEmail}
+              </a>
+              <span className="text-xs text-[#8B95A1]">© 2026 FocusMakers</span>
+            </div>
           </div>
         </footer>
+
+        <BackToTop />
       </div>
     </BetaProvider>
   );
