@@ -12,7 +12,9 @@ export function PhoneFrame({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-[402px] rounded-[64px] bg-[linear-gradient(150deg,#303742_0%,#101419_45%)] p-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,.16),inset_0_-1px_1px_rgba(0,0,0,.5)]">
+    // 화면 402 + 좌우 베젤 10×2 = 422. border-box라 프레임 폭에 패딩을 포함해야
+    // 화면이 베젤 밖으로 삐져나가지 않는다 (시안 dc 런타임은 content-box였다)
+    <div className="w-[422px] rounded-[64px] bg-[linear-gradient(150deg,#303742_0%,#101419_45%)] p-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,.16),inset_0_-1px_1px_rgba(0,0,0,.5)]">
       <div
         className={`relative flex h-[874px] w-[402px] flex-col items-center overflow-hidden rounded-[54px] ${className}`}
       >
