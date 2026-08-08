@@ -10,11 +10,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { IOSStatusBar, PhoneFrame, PhoneScaler } from "./PhoneFrame";
 
-/** 기록 화면은 스트릭·캘린더·요약·목록이 다 들어가야 해서 기본 874pt로는 모자란다.
- *  잘라내는 대신 기기를 늘려 탭 바 위로 내용이 온전히 들어가게 맞춘 값이다.
- *  (내용 1002pt + 탭 바 77pt + 여백 21pt) */
-const RECORDS_SCREEN_H = 1100;
-
 /**
  * 기능별 화면 2·4행 목업 — v2 시안의 402×874pt 화면을 그대로 옮긴 것.
  * 수치·문구는 시안에서 온 값이라 임의로 바꾸지 않는다.
@@ -196,8 +191,10 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
   ].slice(0, 35);
 
   return (
-    <PhoneScaler width={width} screenHeight={RECORDS_SCREEN_H}>
-      <PhoneFrame screenHeight={RECORDS_SCREEN_H} className="bg-white">
+    <PhoneScaler width={width}>
+      {/* 시안 그대로 874pt 화면 — 내용이 넘치면 잘리고, 탭 바가 하얀 페이드와 함께
+          그 위를 덮어 스크롤 중인 화면처럼 보인다 */}
+      <PhoneFrame className="bg-white">
         <IOSStatusBar theme="light" />
 
         <div className="w-full px-5 pt-3.5">

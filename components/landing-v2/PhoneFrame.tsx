@@ -4,26 +4,17 @@
  * 덕분에 안쪽 수치를 앱 디자인에서 그대로 옮겨 쓸 수 있다.
  */
 
-/** 기본 화면 높이(iPhone 16 Pro 기준). 내용이 더 긴 화면은 잘라내지 않고 기기를 늘린다 */
-export const SCREEN_H = 874;
-
-/** 화면 폭 402 + 좌우 베젤 10 */
-const FRAME_W = 422;
-
 export function PhoneFrame({
-  screenHeight = SCREEN_H,
   className = "",
   children,
 }: {
-  screenHeight?: number;
   className?: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="w-[402px] rounded-[64px] bg-[linear-gradient(150deg,#303742_0%,#101419_45%)] p-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,.16),inset_0_-1px_1px_rgba(0,0,0,.5)]">
       <div
-        className={`relative flex w-[402px] flex-col items-center overflow-hidden rounded-[54px] ${className}`}
-        style={{ height: screenHeight }}
+        className={`relative flex h-[874px] w-[402px] flex-col items-center overflow-hidden rounded-[54px] ${className}`}
       >
         {children}
       </div>
@@ -31,25 +22,25 @@ export function PhoneFrame({
   );
 }
 
-/** 프레임(402+베젤 20 × screenHeight+베젤 20)을 지정한 폭으로 줄여 담는 상자 */
+/** 프레임 포함 402×894를 지정한 폭으로 줄여 담는 상자 */
 export function PhoneScaler({
   width,
-  screenHeight = SCREEN_H,
   className = "",
   children,
 }: {
   width: number;
-  screenHeight?: number;
   className?: string;
   children: React.ReactNode;
 }) {
-  const scale = width / FRAME_W;
   return (
     <div
       className={`overflow-hidden drop-shadow-[0_20px_36px_rgba(25,31,40,.22)] ${className}`}
-      style={{ width, height: Math.round((screenHeight + 20) * scale) }}
+      style={{ width, height: Math.round((width * 894) / 422) }}
     >
-      <div className="origin-top-left" style={{ transform: `scale(${scale})` }}>
+      <div
+        className="origin-top-left"
+        style={{ transform: `scale(${width / 422})` }}
+      >
         {children}
       </div>
     </div>
