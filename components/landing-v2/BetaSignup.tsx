@@ -9,16 +9,15 @@ import {
   betaCopy,
   daysLeft,
 } from "@/lib/beta";
-import { supabase } from "@/lib/supabase";
 import { useBeta } from "./BetaContext";
 
 /**
  * 최종 CTA의 베타 신청 카드.
  *
  * iPhone은 이메일 없이 TestFlight 링크로 바로 보내고, Android(와 모집 마감 후
- * 전 기기)는 이메일을 받아 Supabase waitlist 테이블에 남긴다.
- * 테이블 스키마는 사전예약 폼 시절 그대로라(goal not null) 기기 구분은
- * goal/note 에 담는다 — supabase/migrations/0001_waitlist.sql 참고.
+ * 전 기기)는 이메일을 받는다. 저장은 브라우저가 직접 하지 않고
+ * /api/beta/signup 이 service_role 로 처리한다 — 서버 재검증과 레이트리밋을
+ * 거치기 위해서다 (supabase/migrations/0002_beta_testers.sql 참고).
  */
 
 const PILL =
@@ -68,23 +67,35 @@ export function BetaSignup() {
     setError("");
     setStatus("sending");
 
-    const label = ios ? "iPhone(TestFlight)" : "Android(Google Play)";
-    const { error: dbError } = await supabase.from("waitlist").insert({
-      goal: BETA_CLOSED ? "대기 명단" : "베타 테스터",
-      email: value.toLowerCase(),
-      phone: null,
-      note: label,
-    });
+    let ok = false;
+    let message = "신청을 저장하지 못했어요. 잠시 후 다시 시도해 주세요.";
+    try {
+      const res = await fetch("/api/beta/signup", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: value, platform }),
+      });
+      const data = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        message?: string;
+      } | null;
+      ok = res.ok && data?.ok === true;
+      if (!ok && data?.message) message = data.message;
+    } catch {
+      message = "네트워크 상태를 확인하고 다시 시도해 주세요.";
+    }
 
-    // 23505 = unique 위반. 이미 신청한 이메일이므로 완료로 본다
-    if (dbError && dbError.code !== "23505") {
+    if (!ok) {
       setStatus("idle");
-      setError("신청을 저장하지 못했어요. 잠시 후 다시 시도해 주세요.");
+      setError(message);
       return;
     }
 
     setStatus("done");
-    setSaved({ email: value, platform: label });
+    setSaved({
+      email: value,
+      platform: ios ? "iPhone(TestFlight)" : "Android(Google Play)",
+    });
   }
 
   if (status === "done" && saved) {

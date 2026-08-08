@@ -47,3 +47,6 @@ next-env.d.ts
 ChatGPT Image*.png
 .DS_Store
 .gstack/
+
+# 예시 파일은 커밋한다 (실제 .env* 는 위에서 계속 무시)
+!.env.example
