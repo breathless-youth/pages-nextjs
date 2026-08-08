@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CameraRotateIcon,
   PauseIcon,
@@ -165,19 +165,32 @@ export function SimpleModePhone({ width = 262 }: { width?: number }) {
 
 export function SessionPhones() {
   const tick = useTick();
-  // 두 대가 나란히 들어가야 해서 화면이 좁으면 함께 줄인다
+  // 두 대가 나란히 들어가야 해서 자리가 좁으면 함께 줄인다.
+  // 뷰포트가 아니라 실제로 들어갈 칸(그리드 셀) 폭을 재야 중간 폭에서 칸을 넘지 않는다.
+  const rowRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(220);
 
   useEffect(() => {
-    const measure = () =>
-      setWidth(Math.min(220, Math.floor((window.innerWidth - 56) / 2)));
+    const row = rowRef.current;
+    if (!row) return;
+    const measure = () => {
+      const available = row.offsetWidth || window.innerWidth - 40;
+      setWidth(Math.min(220, Math.floor((available - 16) / 2)));
+    };
     measure();
+    // 칸 폭이 바뀌는 경로가 둘이라 둘 다 본다 — 그리드 재배치(ResizeObserver)와
+    // 뷰포트 변화·화면 회전(resize)
+    const ro = new ResizeObserver(measure);
+    ro.observe(row);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   return (
-    <div className="flex w-full justify-center gap-4">
+    <div ref={rowRef} className="flex w-full justify-center gap-4">
       <figure className="m-0 flex flex-col items-center gap-2.5">
         <PhoneScaler width={width}>
           <SessionScreen

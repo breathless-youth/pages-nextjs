@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
 import { BackToTop } from "@/components/landing-v2/BackToTop";
 import { BetaProvider } from "@/components/landing-v2/BetaContext";
@@ -30,6 +31,12 @@ export const metadata: Metadata = {
 const NAV = [
   { href: "#how", label: "참여 방법" },
   { href: "#faq", label: "FAQ" },
+];
+
+const FOOTER_LINKS = [
+  { href: "/terms", label: "이용약관" },
+  { href: SITE.privacyPath, label: "개인정보처리방침" },
+  { href: "/support", label: "문의" },
 ];
 
 const copy = betaCopy();
@@ -451,15 +458,29 @@ export default function Home() {
         </main>
 
         {/* 푸터 */}
-        <footer className="flex flex-col items-start justify-between gap-4 border-t border-[#EFF1F3] px-5 pt-9 pb-14 md:flex-row md:items-start">
-          <div className="mx-auto flex w-full max-w-[1120px] flex-wrap items-start justify-between gap-4">
-            <div className="flex flex-col gap-1.5">
+        <footer className="border-t border-[#EFF1F3] px-5 pt-9 pb-14">
+          <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center gap-6 md:flex-row md:items-start md:justify-between md:gap-4">
+            <div className="flex flex-col items-center gap-1.5 md:items-start">
               <span className="text-base font-bold">FocusMakers</span>
               <span className="text-[13px] text-[#8B95A1]">
                 포메 · 순공시간 자동 측정
               </span>
             </div>
-            <div className="flex flex-col items-end gap-1.5">
+            <nav
+              aria-label="약관 및 문의"
+              className="flex items-center gap-6 md:pt-0.5"
+            >
+              {FOOTER_LINKS.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-[13.5px] text-[#6B7684] transition-colors hover:text-[#191F28]"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex flex-col items-center gap-1.5 md:items-end">
               <a
                 href={`mailto:${SITE.supportEmail}`}
                 className="text-[13px] text-[#6B7684] transition-colors hover:text-[#191F28]"
