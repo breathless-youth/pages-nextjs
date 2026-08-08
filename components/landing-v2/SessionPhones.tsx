@@ -109,7 +109,11 @@ function SessionScreen({
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.32)_0%,rgba(0,0,0,.08)_26%,rgba(0,0,0,.3)_58%,rgba(0,0,0,.68)_100%)]" />
       <div className="relative z-10 flex h-full w-full flex-col items-center">
         <IOSStatusBar theme="dark" />
-        <div className="mt-3">
+        <div
+          className={`mt-3 rounded-full ${
+            state === "focus" ? "animate-ring-out-blue" : "animate-ring-out-orange"
+          }`}
+        >
           <StatusPill state={state} />
         </div>
         <div className="flex-1" />
@@ -140,11 +144,13 @@ export function SimpleModePhone({ width = 262 }: { width?: number }) {
     <PhoneScaler width={width}>
       <PhoneFrame>
         <div className="absolute inset-0 bg-[#0B0F14]" />
-        <div className="animate-glow-pulse pointer-events-none absolute inset-0 shadow-[inset_0_0_90px_12px_rgba(49,130,246,.38)]" />
+        <div className="animate-simple-glow pointer-events-none absolute inset-0 shadow-[inset_0_0_90px_12px_rgba(49,130,246,.38)]" />
         <div className="relative z-10 h-full w-full">
           <IOSStatusBar theme="dark" />
           <div className="absolute top-[71px] right-0 left-0 flex justify-center">
-            <StatusPill state="focus" />
+            <div className="animate-ring-out-blue rounded-full">
+              <StatusPill state="focus" />
+            </div>
           </div>
           <div className="absolute inset-0 flex flex-col items-center justify-center pb-[130px]">
             <span className="text-[56px] leading-[64px] font-bold tracking-[-0.5px] tabular-nums text-[#4593FC] drop-shadow-[0_0_26px_rgba(49,130,246,.5)]">

@@ -161,7 +161,7 @@ export function BetaSignup() {
                 setEmail(e.target.value);
                 setError("");
               }}
-              className="h-[54px] min-w-0 flex-1 rounded-[14px] bg-white px-4 text-[16px] text-[#191F28] shadow-[inset_0_0_0_1px_#D1D6DB] outline-none focus:shadow-[inset_0_0_0_2px_#1B64DA]"
+              className="h-[54px] min-w-0 flex-1 rounded-[14px] bg-white px-4 text-[16px] text-[#191F28] placeholder:text-[#8B95A1] shadow-[inset_0_0_0_1px_#D1D6DB] outline-none focus:shadow-[inset_0_0_0_2px_#1B64DA]"
             />
             <button
               type="submit"

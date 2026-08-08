@@ -102,6 +102,81 @@
       opacity: 0.3;
     }
   }
+
+  /* ── 랜딩 v2 전용 — Claude Design "FocusMakers Landing v2" 시안 값 그대로 ── */
+  --animate-pulse-dot: pulse-dot 2s ease-out infinite;
+  --animate-ring-out-blue: ring-out-blue 1.8s ease-out infinite;
+  --animate-ring-out-orange: ring-out-orange 1.8s ease-out infinite;
+  --animate-simple-glow: simple-glow 2.6s ease-in-out infinite;
+  --animate-faq-in: faq-in 0.24s cubic-bezier(0.23, 1, 0.32, 1);
+  --animate-top-in: top-in 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* 히어로 배지 점 — 파란 링이 퍼지며 사라진다 */
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(27, 100, 218, 0.35);
+    }
+    70% {
+      box-shadow: 0 0 0 7px rgba(27, 100, 218, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(27, 100, 218, 0);
+    }
+  }
+
+  /* 세션 상태 필 — 측정 중임을 알리는 확산 링 (집중=파랑 · 비집중=주황) */
+  @keyframes ring-out-blue {
+    0% {
+      box-shadow: 0 0 0 0 rgba(69, 147, 252, 0.55);
+    }
+    75%,
+    100% {
+      box-shadow: 0 0 0 14px rgba(69, 147, 252, 0);
+    }
+  }
+
+  @keyframes ring-out-orange {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 158, 27, 0.5);
+    }
+    75%,
+    100% {
+      box-shadow: 0 0 0 14px rgba(255, 158, 27, 0);
+    }
+  }
+
+  /* 심플 모드 — 화면 발광이 숨쉬듯 밝아졌다 어두워진다 (시안은 2.6s) */
+  @keyframes simple-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0.22;
+    }
+  }
+
+  @keyframes faq-in {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes top-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -127,7 +202,13 @@ body {
   .animate-drift-slow,
   .animate-float-y,
   .animate-breathe,
-  .animate-glow-pulse {
+  .animate-glow-pulse,
+  .animate-pulse-dot,
+  .animate-ring-out-blue,
+  .animate-ring-out-orange,
+  .animate-simple-glow,
+  .animate-faq-in,
+  .animate-top-in {
     animation: none;
   }
 }

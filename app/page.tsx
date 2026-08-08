@@ -5,6 +5,7 @@ import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
 import { BackToTop } from "@/components/landing-v2/BackToTop";
 import { BetaProvider } from "@/components/landing-v2/BetaContext";
 import { BetaSignup } from "@/components/landing-v2/BetaSignup";
+import { FaqAccordion } from "@/components/landing-v2/FaqAccordion";
 import { RecordsPhone, ResultPhone } from "@/components/landing-v2/PhoneMockups";
 import { PlatformGuide } from "@/components/landing-v2/PlatformGuide";
 import { Reveal } from "@/components/landing-v2/Reveal";
@@ -166,7 +167,7 @@ export default function Home() {
           <section className="px-5 pt-[88px] pb-[72px]">
             <div className="mx-auto flex max-w-[760px] flex-col items-center gap-6 text-center">
               <p className="flex items-center gap-2.5 rounded-full bg-[#E8F3FF] px-[15px] py-2">
-                <span className="animate-soft-pulse h-2 w-2 rounded-full bg-[#1B64DA]" />
+                <span className="animate-pulse-dot h-2 w-2 rounded-full bg-[#1B64DA]" />
                 <span className="text-[13.5px] font-semibold text-[#1B64DA]">
                   {copy.badge}
                 </span>
@@ -410,27 +411,7 @@ export default function Home() {
               <h2 className="text-center text-[26px] font-bold tracking-[-0.5px] md:text-[34px]">
                 자주 묻는 질문
               </h2>
-              <div className="flex flex-col">
-                {BETA_FAQS.map((f) => (
-                  <details
-                    key={f.q}
-                    className="group border-b border-[#EFF1F3]"
-                  >
-                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-[10px] px-1 py-[19px] transition-colors active:bg-[#F9FAFB] [&::-webkit-details-marker]:hidden">
-                      <span className="text-base font-semibold break-keep text-[#191F28]">
-                        {f.q}
-                      </span>
-                      <CaretDownIcon
-                        size={13}
-                        className="shrink-0 text-[#8B95A1] transition-transform duration-200 group-open:rotate-180"
-                      />
-                    </summary>
-                    <p className="px-1 pb-5 text-[15px] leading-[23px] text-pretty break-keep text-[#6B7684]">
-                      {f.a}
-                    </p>
-                  </details>
-                ))}
-              </div>
+              <FaqAccordion items={BETA_FAQS} />
             </Reveal>
           </section>
 

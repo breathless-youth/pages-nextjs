@@ -34,7 +34,7 @@ export function PhoneScaler({
 }) {
   return (
     <div
-      className={`overflow-hidden drop-shadow-[0_20px_36px_rgba(25,31,40,.22)] ${className}`}
+      className={`overflow-hidden drop-shadow-[0_20px_36px_rgba(25,31,40,.22)] drop-shadow-[0_4px_10px_rgba(25,31,40,.12)] ${className}`}
       style={{ width, height: Math.round((width * 894) / 422) }}
     >
       <div

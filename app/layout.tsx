@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${pretendard.variable} ${GeistMono.variable} h-full antialiased`}
+      className={`${pretendard.variable} ${GeistMono.variable} h-full antialiased motion-safe:scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
       {/* 로컬 개발 트래픽이 GA4에 섞이지 않도록 프로덕션 빌드에서만 로드한다 */}
