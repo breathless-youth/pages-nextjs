@@ -83,23 +83,23 @@ export function ResultPhone({ width = 262 }: { width?: number }) {
         </div>
 
         <div className="flex w-full flex-col px-5 pt-2.5">
-          <span className="mt-3.5 text-sm font-medium text-[#6B7684]">
+          <span className="mt-3.5 text-sm leading-[17px] font-medium text-[#6B7684]">
             순공시간
           </span>
           <div className="mt-0.5 flex items-baseline gap-2.5">
             <span className="text-[40px] leading-[48px] font-bold tracking-[-1px]">
               1시간 24분
             </span>
-            <span className="rounded-full bg-[#E8F3FF] px-[9px] py-[3px] text-xs font-semibold text-[#1B64DA]">
+            <span className="rounded-full bg-[#E8F3FF] px-[9px] py-[3px] text-xs leading-[14px] font-semibold text-[#1B64DA]">
               80% 집중
             </span>
           </div>
-          <span className="mt-1 text-[13px] text-[#8B95A1]">
+          <span className="mt-1 text-[13px] leading-4 text-[#8B95A1]">
             총 공부 1시간 45분 · 21:03 – 22:48
           </span>
 
           <div className="mt-[22px] rounded-2xl bg-[#F9FAFB] p-4">
-            <span className="text-[13px] font-semibold">공부 타임라인</span>
+            <span className="text-[13px] leading-4 font-semibold">공부 타임라인</span>
             <div className="mt-3 flex h-3.5 overflow-hidden rounded-full">
               {timeline.map(([w, focus], i) => (
                 <span
@@ -111,11 +111,11 @@ export function ResultPhone({ width = 262 }: { width?: number }) {
                 />
               ))}
             </div>
-            <div className="mt-2 flex justify-between text-[11px] text-[#8B95A1] tabular-nums">
+            <div className="mt-2 flex justify-between text-[11px] leading-[13px] text-[#8B95A1] tabular-nums">
               <span>21:03</span>
               <span>22:48</span>
             </div>
-            <div className="mt-2.5 flex gap-3.5 text-xs text-[#6B7684]">
+            <div className="mt-2.5 flex gap-3.5 text-xs leading-[14px] text-[#6B7684]">
               <span className="flex items-center gap-[5px]">
                 <i className="h-1.5 w-1.5 rounded-full bg-[#1B64DA]" />
                 집중
@@ -128,7 +128,7 @@ export function ResultPhone({ width = 262 }: { width?: number }) {
           </div>
 
           <div className="mt-3 rounded-2xl bg-[#F9FAFB] px-4 py-1">
-            <div className="pt-[13px] pb-[9px] text-[13px] font-semibold">
+            <div className="pt-[13px] pb-[9px] text-[13px] leading-4 font-semibold">
               비집중 21분
             </div>
             {events.map(([label, count]) => (
@@ -136,11 +136,11 @@ export function ResultPhone({ width = 262 }: { width?: number }) {
                 key={label}
                 className="flex items-center justify-between border-t border-[#EFF1F3] py-[11px]"
               >
-                <span className="flex items-center gap-2 text-sm">
+                <span className="flex items-center gap-2 text-sm leading-[17px]">
                   <i className="h-[7px] w-[7px] rounded-full bg-[#FF8A00]" />
                   {label}
                 </span>
-                <span className="flex items-center gap-[5px] text-[13px] text-[#6B7684]">
+                <span className="flex items-center gap-[5px] text-[13px] leading-4 text-[#6B7684]">
                   {count}
                   <CaretDownIcon size={9} className="text-[#8B95A1]" />
                 </span>
@@ -207,8 +207,8 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
             <div className="flex items-center gap-3">
               <Flame />
               <div className="flex flex-col gap-0.5">
-                <span className="text-[17px] font-bold">12일 연속 공부 중</span>
-                <span className="text-[12.5px] text-[#6B7684]">
+                <span className="text-[17px] leading-5 font-bold">12일 연속 공부 중</span>
+                <span className="text-[12.5px] leading-[15px] text-[#6B7684]">
                   내일도 10분만 하면 이어져요
                 </span>
               </div>
@@ -219,14 +219,14 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B64DA] text-white">
                     <CheckIcon size={13} weight="bold" />
                   </span>
-                  <span className="text-[11px] text-[#8B95A1]">{d}</span>
+                  <span className="text-[11px] leading-[13px] text-[#8B95A1]">{d}</span>
                 </div>
               ))}
               <div className="flex flex-col items-center gap-[5px]">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1B64DA] shadow-[0_0_0_2px_#F9FAFB,0_0_0_3.5px_#1B64DA]">
                   <span className="text-[11px] font-bold text-white">25</span>
                 </span>
-                <span className="text-[11px] font-semibold text-[#1B64DA]">
+                <span className="text-[11px] leading-[13px] font-semibold text-[#1B64DA]">
                   토
                 </span>
               </div>
@@ -239,7 +239,7 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
               <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#F2F4F6] text-[#6B7684]">
                 <CaretLeftIcon size={11} weight="bold" />
               </span>
-              <span className="text-base font-bold">2026년 7월</span>
+              <span className="text-base leading-[19px] font-bold">2026년 7월</span>
               <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#F2F4F6] text-[#D1D6DB]">
                 <CaretRightIcon size={11} weight="bold" />
               </span>
@@ -248,7 +248,7 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
               {["일", "월", "화", "수", "목", "금", "토"].map((d) => (
                 <span
                   key={d}
-                  className="w-[14.28%] text-center text-xs text-[#8B95A1]"
+                  className="w-[14.28%] text-center text-xs leading-[14px] text-[#8B95A1]"
                 >
                   {d}
                 </span>
@@ -284,7 +284,7 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
           </div>
 
           {/* 학습 요약 */}
-          <span className="mt-1 px-0.5 text-base font-bold">
+          <span className="mt-1 px-0.5 text-base leading-[19px] font-bold">
             7월 24일 학습 요약
           </span>
           <div className="grid grid-cols-2 gap-2">
@@ -293,9 +293,9 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
                 key={label}
                 className="flex flex-col gap-0.5 rounded-[14px] bg-[#F9FAFB] px-3.5 py-[13px] shadow-[inset_0_0_0_1px_#E5E8EB]"
               >
-                <span className="text-xs text-[#8B95A1]">{label}</span>
+                <span className="text-xs leading-[14px] text-[#8B95A1]">{label}</span>
                 <span
-                  className={`text-lg font-bold ${accent ? "text-[#1B64DA]" : ""}`}
+                  className={`text-lg leading-[22px] font-bold ${accent ? "text-[#1B64DA]" : ""}`}
                 >
                   {value}
                 </span>
@@ -305,8 +305,8 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
 
           {/* 공부 기록 */}
           <div className="mt-1.5 flex items-center justify-between px-0.5">
-            <span className="text-base font-bold">공부 기록</span>
-            <span className="flex items-center gap-1 text-[12.5px] font-medium text-[#6B7684]">
+            <span className="text-base leading-[19px] font-bold">공부 기록</span>
+            <span className="flex items-center gap-1 text-[12.5px] leading-[15px] font-medium text-[#6B7684]">
               최신순
               <CaretDownIcon size={9} />
             </span>
@@ -319,17 +319,17 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
               >
                 <div className="flex items-center gap-3">
                   <div className="flex flex-1 flex-col gap-0.5">
-                    <span className="text-[17px] font-bold">{s.net}</span>
-                    <span className="text-[12.5px] text-[#8B95A1] tabular-nums">
+                    <span className="text-[17px] leading-5 font-bold">{s.net}</span>
+                    <span className="text-[12.5px] leading-[15px] text-[#8B95A1] tabular-nums">
                       {s.when}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex flex-col items-end gap-px">
-                      <span className="text-[11px] font-medium text-[#8B95A1]">
+                      <span className="text-[11px] leading-[13px] font-medium text-[#8B95A1]">
                         집중률
                       </span>
-                      <span className="text-xl font-bold text-[#1B64DA]">
+                      <span className="text-xl leading-6 font-bold text-[#1B64DA]">
                         {s.rate}
                       </span>
                     </div>
@@ -340,7 +340,7 @@ export function RecordsPhone({ width = 262 }: { width?: number }) {
                   {s.tags.map((t) => (
                     <span
                       key={t}
-                      className="flex items-center gap-1 rounded-full bg-[#FFF4E5] px-[9px] py-[3px] text-[11.5px] font-medium text-[#B36100]"
+                      className="flex items-center gap-1 rounded-full bg-[#FFF4E5] px-[9px] py-[3px] text-[11.5px] leading-[14px] font-medium text-[#B36100]"
                     >
                       <i className="h-[5px] w-[5px] rounded-full bg-[#FF8A00]" />
                       {t}

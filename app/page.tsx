@@ -163,8 +163,8 @@ export default function Home() {
         </header>
 
         <main id="top">
-          {/* 히어로 */}
-          <section className="px-5 pt-[88px] pb-[72px]">
+          {/* 히어로 — id는 BackToTop이 화면 이탈을 감지하는 기준 */}
+          <section id="hero" className="px-5 pt-[88px] pb-[72px]">
             <div className="mx-auto flex max-w-[760px] flex-col items-center gap-6 text-center">
               <p className="flex items-center gap-2.5 rounded-full bg-[#E8F3FF] px-[15px] py-2">
                 <span className="animate-pulse-dot h-2 w-2 rounded-full bg-[#1B64DA]" />

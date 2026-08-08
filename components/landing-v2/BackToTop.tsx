@@ -1,27 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { useReducedMotion } from "motion/react";
 
 /**
  * 히어로를 지나면 나타나는 맨 위로 버튼 — v2 시안의 showTop 동작.
- * 히어로 섹션을 IntersectionObserver로 보고, 화면에서 벗어나면 띄운다.
+ * IntersectionObserver는 백그라운드 탭에서 콜백이 밀려 스크롤 리스너로 판정한다.
+ * (판정 기준은 시안과 같다: 히어로 섹션이 화면에서 벗어나면 표시)
  */
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
   const reduce = useReducedMotion();
-  const observed = useRef(false);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
-    if (!hero || observed.current) return;
-    observed.current = true;
-    const io = new IntersectionObserver(([entry]) =>
-      setVisible(!entry.isIntersecting),
-    );
-    io.observe(hero);
-    return () => io.disconnect();
+    const threshold = () =>
+      hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
+
+    const onScroll = () => setVisible(window.scrollY > threshold());
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   if (!visible) return null;
