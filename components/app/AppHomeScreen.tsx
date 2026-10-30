@@ -69,7 +69,7 @@ export function AppHomeScreen() {
             </p>
             <p className="mt-1 text-[13px] font-bold">12일째</p>
             <p className="mt-0.5 text-[7.5px] text-[#B0B8C1]">
-              하루 10분이면 유지돼요
+              하루 5분이면 유지돼요
             </p>
           </div>
           <div className="rounded-2xl bg-white p-2.5 shadow-[0_1px_4px_rgba(15,23,42,0.06)]">

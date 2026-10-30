@@ -51,7 +51,7 @@ export function AppRecordsScreen() {
             <p className="text-[11px] font-bold">12일 연속 공부 중</p>
           </div>
           <p className="mt-0.5 text-[8px] text-[#8B95A1]">
-            내일도 10분만 하면 이어져요
+            내일도 5분만 하면 이어져요
           </p>
           <div className="mt-2 flex justify-between">
             {WEEK_CHECK.map((d, i) => (
