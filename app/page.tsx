@@ -99,7 +99,7 @@ const FEATURES: { icon: React.ReactNode; tint: string; title: string; body: stri
   {
     tint: "#FFF4E5",
     title: "연속 공부 스트릭",
-    body: "하루 10분이면 유지돼요. 월 달력과 주간 도트로 흐름이 보여요.",
+    body: "하루 5분이면 유지돼요. 월 달력과 주간 도트로 흐름이 보여요.",
     icon: (
       <svg width="18" height="21" viewBox="0 0 34 40" aria-hidden="true">
         <path

@@ -33,7 +33,7 @@ const steps: [string, string][] = [
 const records: [string, string][] = [
   ["순공 시간", "타이머를 켜 둔 시간이 아니라 실제로 집중한 시간"],
   ["공부 통계", "일간, 주간, 월간으로 쌓이는 나의 공부 패턴"],
-  ["연속 공부", "하루 10분이면 이어지는 연속 기록"],
+  ["연속 공부", "하루 5분이면 이어지는 연속 기록"],
 ];
 
 export default function InkPage() {
